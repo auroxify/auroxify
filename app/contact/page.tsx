@@ -1,51 +1,322 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-  MapPin, Phone, Mail, ArrowRight, CheckCircle2, Plus, Minus, 
-  Send, ShieldCheck, Clock, Award, MessageCircle, ChevronDown
+  MapPin, Phone, Mail, ArrowRight, CheckCircle2, Plus, Minus,
+  Send, ShieldCheck, Clock, MessageCircle, Search, FileText, PhoneCall,
 } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-const FAQS = [
-  { q: "How soon can we start?", a: "Once we finalize the requirements and you approve the quote, we can start within 24 to 48 hours." },
-  { q: "Do you sign NDAs?", a: "Absolutely. We respect your privacy and intellectual property. We are happy to sign an NDA before we discuss the details." },
-  { q: "What is your payment structure?", a: "Usually, we take 50% upfront to kick off the project and the remaining 50% upon successful completion and testing." },
-  { q: "Do you provide support after launch?", a: "Yes, we offer 30 days of free bug-fixing support after launch, and then you can choose from our monthly maintenance plans." }
+/* ── EDIT YOUR REAL DETAILS HERE ── */
+const EMAIL = "hello@auroxify.com";
+const PHONE_DISPLAY = "+92 300 1234567";
+const PHONE_TEL = "+923001234567";
+const WHATSAPP = "920000000000"; // country code + number, no + or spaces
+const WHATSAPP_MESSAGE = "Hello! I would like to know more about your services.";
+const OFFICE_NAME = "Auroxify HQ";
+const OFFICE_ADDRESS = "Gulberg III, Lahore, Pakistan";
+const MAP_QUERY = "Gulberg III, Lahore, Pakistan";
+const HOURS = "Mon-Sat, 9am to 6pm (PKT)";
+
+const WA_LINK = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
+const SERVICES = [
+  { id: "web", label: "Web Development" },
+  { id: "ecommerce", label: "E-Commerce" },
+  { id: "ai", label: "AI Integration" },
+  { id: "seo", label: "SEO" },
+  { id: "maintenance", label: "Maintenance" },
+  { id: "other", label: "Other" },
 ];
 
-export default function ContactPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+const BUDGETS = ["Under $500", "$500 – $1,500", "$1,500 – $5,000", "$5,000+", "Not sure yet"];
 
-  const handleSubmit = (e: React.FormEvent) => {
+const FAQS = [
+  { q: "How soon can we start?", a: "Once we finalize the requirements and you approve the quote, we can start within 24 to 48 hours." },
+  { q: "Do you sign NDAs?", a: "Absolutely. We respect your privacy and intellectual property, and we are happy to sign an NDA before we discuss the details." },
+  { q: "What is your payment structure?", a: "Usually 50% upfront to kick off the project and the remaining 50% on successful completion and testing." },
+  { q: "Do you provide support after launch?", a: "Yes. We offer 30 days of free bug-fixing after launch, and then you can choose from our monthly maintenance plans." },
+];
+
+const STEPS = [
+  { icon: Search, title: "We review your message", desc: "A real person reads it and replies within 24 hours." },
+  { icon: PhoneCall, title: "Free discovery call", desc: "We talk through your goals, timeline and budget. No pressure." },
+  { icon: FileText, title: "You get a clear quote", desc: "Scope, timeline and price in writing before anything starts." },
+];
+
+const FIELD =
+  "w-full min-h-[48px] rounded-xl border border-line-hover bg-base/50 px-4 py-3 text-base text-white outline-none transition-all placeholder:text-[var(--text-faint)] focus:border-primary focus:ring-1 focus:ring-primary sm:text-sm";
+
+/* ═══════ FORM ═══════ */
+function ContactForm() {
+  const params = useSearchParams();
+  const [service, setService] = useState<string>("");
+  const [budget, setBudget] = useState<string>("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [error, setError] = useState("");
+
+  // pre-select the service when coming from /services (?service=ai)
+  useEffect(() => {
+    const s = params.get("service");
+    if (s && SERVICES.some((x) => x.id === s)) setService(s);
+  }, [params]);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    // Fake API call simulation
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 5000);
-    }, 1500);
+    if (!service) {
+      setError("Please choose the service you need.");
+      return;
+    }
+    setError("");
+    setStatus("sending");
+
+    // TODO: connect this to your real backend, e.g.
+    // await fetch("/api/contact", { method: "POST", body: JSON.stringify({ ...fields, service, budget }) });
+    await new Promise((r) => setTimeout(r, 1400));
+
+    setStatus("sent");
+  };
+
+  const reset = () => {
+    setStatus("idle");
+    setService("");
+    setBudget("");
   };
 
   return (
-    <main className="bg-base min-h-screen text-white overflow-hidden">
+    <div className="glass rounded-3xl p-5 sm:p-8">
+      <AnimatePresence mode="wait" initial={false}>
+        {status === "sent" ? (
+          <motion.div
+            key="sent"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.4, ease }}
+            className="flex flex-col items-center py-10 text-center"
+          >
+            <span className="grid h-16 w-16 place-items-center rounded-full bg-green-500/15 text-green-400">
+              <CheckCircle2 size={34} />
+            </span>
+            <h3 className="mt-6 font-heading text-2xl font-bold">Message sent!</h3>
+            <p className="mt-2 max-w-sm text-sm text-[var(--text-mid)]">
+              Thanks for reaching out. We'll reply within 24 hours. In a hurry? Message us on WhatsApp.
+            </p>
+            <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                Chat on WhatsApp <MessageCircle size={16} />
+              </a>
+              <button
+                onClick={reset}
+                className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-line-hover bg-white/5 px-6 text-sm font-semibold transition hover:border-brand-line"
+              >
+                Send another message
+              </button>
+            </div>
+          </motion.div>
+        ) : (
+          <motion.form
+            key="form"
+            onSubmit={onSubmit}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="space-y-6"
+          >
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <label className="block">
+                <span className="mb-2 block text-xs font-medium text-[var(--text-dim)]">Your name</span>
+                <input name="name" type="text" required autoComplete="name" placeholder="Ali Khan" className={FIELD} />
+              </label>
+              <label className="block">
+                <span className="mb-2 block text-xs font-medium text-[var(--text-dim)]">Email</span>
+                <input name="email" type="email" required autoComplete="email" placeholder="you@company.com" className={FIELD} />
+              </label>
+            </div>
 
-      {/* ── 1. HERO & FORM & IPHONE MOCKUP ── */}
-      <section className="relative pt-32 pb-20 px-5 md:px-10 overflow-hidden">
+            <label className="block">
+              <span className="mb-2 block text-xs font-medium text-[var(--text-dim)]">Phone / WhatsApp (optional)</span>
+              <input name="phone" type="tel" autoComplete="tel" inputMode="tel" placeholder="+92 300 0000000" className={FIELD} />
+            </label>
+
+            <fieldset>
+              <legend className="mb-3 text-xs font-medium text-[var(--text-dim)]">What do you need?</legend>
+              <div className="flex flex-wrap gap-2">
+                {SERVICES.map((s) => (
+                  <button
+                    key={s.id}
+                    type="button"
+                    aria-pressed={service === s.id}
+                    onClick={() => {
+                      setService(s.id);
+                      setError("");
+                    }}
+                    className={`min-h-[44px] rounded-full border px-4 text-sm transition-colors ${
+                      service === s.id
+                        ? "border-primary bg-primary/20 text-white"
+                        : "border-line-hover bg-white/5 text-[var(--text-mid)] hover:border-brand-line hover:text-white"
+                    }`}
+                  >
+                    {s.label}
+                  </button>
+                ))}
+              </div>
+              {error && (
+                <p role="alert" className="mt-3 text-sm text-red-400">
+                  {error}
+                </p>
+              )}
+            </fieldset>
+
+            <fieldset>
+              <legend className="mb-3 text-xs font-medium text-[var(--text-dim)]">Estimated budget (optional)</legend>
+              <div className="flex flex-wrap gap-2">
+                {BUDGETS.map((b) => (
+                  <button
+                    key={b}
+                    type="button"
+                    aria-pressed={budget === b}
+                    onClick={() => setBudget(budget === b ? "" : b)}
+                    className={`min-h-[44px] rounded-full border px-4 text-sm transition-colors ${
+                      budget === b
+                        ? "border-primary bg-primary/20 text-white"
+                        : "border-line-hover bg-white/5 text-[var(--text-mid)] hover:border-brand-line hover:text-white"
+                    }`}
+                  >
+                    {b}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+
+            <label className="block">
+              <span className="mb-2 block text-xs font-medium text-[var(--text-dim)]">Tell us about your project</span>
+              <textarea
+                name="message"
+                required
+                rows={4}
+                placeholder="What are you building, and what does success look like?"
+                className={`${FIELD} resize-none`}
+              />
+            </label>
+
+            <button type="submit" disabled={status === "sending"} className="btn btn-primary group w-full disabled:opacity-70">
+              {status === "sending" ? (
+                <span className="flex items-center gap-2">
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" /> Sending...
+                </span>
+              ) : (
+                <span className="flex items-center gap-2">
+                  Send Message
+                  <Send size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-1" />
+                </span>
+              )}
+            </button>
+
+            <p className="flex items-center justify-center gap-2 text-center text-xs text-[var(--text-dim)]">
+              <ShieldCheck size={14} className="shrink-0 text-green-400" /> Your details stay private. We're happy to sign an NDA.
+            </p>
+          </motion.form>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+/* ═══════ PHONE MOCKUP ═══════ */
+function PhoneMockup() {
+  return (
+    <div className="relative mx-auto flex w-full max-w-md justify-center py-6 [perspective:1000px]">
+      <div className="absolute inset-x-10 inset-y-10 rounded-full bg-gradient-to-tr from-primary/25 to-violet/25 blur-3xl" />
+
+      {/* floating cards */}
+      <div className="glass absolute left-0 top-10 z-20 hidden items-center gap-3 rounded-2xl border-brand-line bg-card/80 p-4 backdrop-blur-md [animation:bounce_4s_infinite] sm:flex">
+        <span className="rounded-lg bg-green-500/20 p-2 text-green-400">
+          <Clock size={18} />
+        </span>
+        <div>
+          <p className="text-xs text-[var(--text-dim)]">Response time</p>
+          <p className="text-sm font-bold">Under 24h</p>
+        </div>
+      </div>
+      <div className="glass absolute bottom-16 right-0 z-20 hidden items-center gap-3 rounded-2xl border-violet/30 bg-card/80 p-4 backdrop-blur-md [animation:bounce_5s_infinite_reverse] sm:flex">
+        <span className="rounded-lg bg-violet-500/20 p-2 text-violet-400">
+          <ShieldCheck size={18} />
+        </span>
+        <div>
+          <p className="text-xs text-[var(--text-dim)]">100% secure</p>
+          <p className="text-sm font-bold">NDA protected</p>
+        </div>
+      </div>
+
+      {/* phone */}
+      <motion.div
+        animate={{ rotateY: [-5, 5, -5], rotateX: [2, -2, 2] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="relative z-10 h-[540px] w-[270px] overflow-hidden rounded-[2.8rem] border-[8px] border-[#1a1a1a] bg-[#0a0a0a] sm:h-[600px] sm:w-[300px]"
+        style={{ boxShadow: "0 0 50px rgba(71,142,206,.25), inset 0 0 20px rgba(0,0,0,.8)" }}
+      >
+        <div className="absolute left-1/2 top-3 z-30 h-6 w-24 -translate-x-1/2 rounded-full bg-black" />
+
+        <div className="absolute inset-0 overflow-hidden rounded-[2.2rem] bg-[#e5e3df]">
+          <iframe
+            title={`Map showing ${OFFICE_NAME}`}
+            src={`https://maps.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&z=14&output=embed`}
+            width="100%"
+            height="100%"
+            style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) contrast(110%)" }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+
+          <div className="absolute bottom-5 left-1/2 flex w-[88%] -translate-x-1/2 items-start gap-3 rounded-2xl bg-white/95 p-4 shadow-xl backdrop-blur-md">
+            <div className="shrink-0 rounded-full bg-primary/10 p-2 text-primary">
+              <MapPin size={20} />
+            </div>
+            <div className="min-w-0">
+              <h4 className="text-sm font-bold text-gray-900">{OFFICE_NAME}</h4>
+              <p className="mt-0.5 text-xs text-gray-600">{OFFICE_ADDRESS}</p>
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex min-h-[32px] items-center gap-1 text-xs font-semibold text-primary"
+              >
+                Get directions <ArrowRight size={12} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+/* ═══════ PAGE ═══════ */
+export default function ContactPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  const CARDS = [
+    { icon: Mail, title: "Email us", val: EMAIL, href: `mailto:${EMAIL}` },
+    { icon: Phone, title: "Call us", val: PHONE_DISPLAY, href: `tel:${PHONE_TEL}` },
+    { icon: MessageCircle, title: "WhatsApp", val: "Message us anytime", href: WA_LINK },
+    { icon: MapPin, title: "Visit us", val: OFFICE_ADDRESS, href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}` },
+  ];
+
+  return (
+    <main className="min-h-screen overflow-x-clip bg-base text-white">
+
+      {/* ── 1. HERO: FORM + PHONE MOCKUP ── */}
+      <section className="relative overflow-hidden px-5 pb-20 pt-32 md:px-10">
         <div className="grid-bg" />
         <div className="blob left-[-10%] top-[10%] h-[400px] w-[400px]" style={{ background: "var(--blob-blue)" }} />
-        <div className="blob right-[-10%] bottom-[10%] h-[400px] w-[400px]" style={{ background: "var(--blob-violet)" }} />
+        <div className="blob bottom-[10%] right-[-10%] h-[400px] w-[400px]" style={{ background: "var(--blob-violet)" }} />
 
-        <div className="wrap max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
-          
-          {/* Left Side: Contact Form */}
-          <div className="order-2 lg:order-1">
+        <div className="wrap relative z-10 mx-auto grid max-w-7xl items-start gap-14 lg:grid-cols-[1.1fr_.9fr] lg:gap-16">
+          <div className="min-w-0">
             <motion.span
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease }}
               className="eyebrow"
@@ -56,208 +327,181 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.1 }}
               className="h-xl mt-6"
             >
-              Let's build <br /> <span className="grad-text">something great.</span>
+              Let's build <br className="hidden sm:block" /> <span className="grad-text">something great.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.2 }}
-              className="lead mt-6 mb-10"
+              className="lead mb-10 mt-6"
             >
-              Have a project in mind? Fill out the form below and our team will get back to you within 24 hours.
+              Have a project in mind? Fill out the form and our team will get back to you within 24 hours.
             </motion.p>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.3 }}
-              className="glass p-6 md:p-8 rounded-3xl"
             >
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  {/* Name */}
-                  <div className="relative group">
-                    <input type="text" required placeholder="Your Name" className="w-full bg-base/50 border border-line-hover rounded-xl px-4 py-3.5 text-sm text-white outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all peer" />
-                  </div>
-                  {/* Email */}
-                  <div className="relative group">
-                    <input type="email" required placeholder="Your Email" className="w-full bg-base/50 border border-line-hover rounded-xl px-4 py-3.5 text-sm text-white outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all peer" />
-                  </div>
-                </div>
-                
-                {/* Service Selection */}
-                <div className="relative">
-                  {/* Yahan defaultValue="" add kiya hai */}
-                  <select 
-                    defaultValue=""
-                    className="w-full bg-base/50 border border-line-hover rounded-xl px-4 py-3.5 text-sm text-[var(--text-dim)] outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none cursor-pointer"
-                  >
-                    {/* Yahan se 'selected' hata diya hai */}
-                    <option value="" disabled>Select a Service</option>
-                    <option value="ecommerce">E-Commerce Store</option>
-                    <option value="custom">Custom Development</option>
-                    <option value="ai">AI Integration</option>
-                    <option value="seo">SEO Optimization</option>
-                    <option value="other">Other</option>
-                  </select>
-                  <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--text-dim)] pointer-events-none" />
-                </div>
-
-                {/* Message */}
-                <div className="relative group">
-                  <textarea required placeholder="Tell us about your project..." rows={4} className="w-full bg-base/50 border border-line-hover rounded-xl px-4 py-3.5 text-sm text-white outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"></textarea>
-                </div>
-
-                {/* Submit Button */}
-                <button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className="btn btn-primary w-full group relative overflow-hidden"
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center gap-2"><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Sending...</span>
-                  ) : submitted ? (
-                    <span className="flex items-center gap-2 text-green-300"><CheckCircle2 size={18} /> Message Sent!</span>
-                  ) : (
-                    <span className="flex items-center gap-2">Send Message <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /></span>
-                  )}
-                </button>
-              </form>
+              <Suspense fallback={<div className="glass h-[520px] rounded-3xl" />}>
+                <ContactForm />
+              </Suspense>
             </motion.div>
           </div>
 
-          {/* Right Side: iPhone Mockup with Google Maps */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease, delay: 0.2 }}
-            className="order-1 lg:order-2 flex justify-center relative [perspective:1000px]"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease, delay: 0.3 }}
+            className="min-w-0 lg:sticky lg:top-28"
           >
-            {/* Floating Elements behind Phone */}
-            <div className="absolute top-10 left-10 p-4 glass rounded-2xl border-brand-line bg-card/80 backdrop-blur-md animate-[bounce_4s_infinite] z-0 hidden md:block">
-              <div className="flex items-center gap-3">
-                <span className="p-2 rounded-lg bg-green-500/20 text-green-400"><Clock size={18} /></span>
-                <div><p className="text-xs text-[var(--text-dim)]">Response Time</p><p className="font-bold text-sm">Under 24h</p></div>
-              </div>
-            </div>
-            <div className="absolute bottom-16 right-4 p-4 glass rounded-2xl border-violet/30 bg-card/80 backdrop-blur-md animate-[bounce_5s_infinite_reverse] z-0 hidden md:block">
-              <div className="flex items-center gap-3">
-                <span className="p-2 rounded-lg bg-violet-500/20 text-violet-400"><ShieldCheck size={18} /></span>
-                <div><p className="text-xs text-[var(--text-dim)]">100% Secure</p><p className="font-bold text-sm">NDA Protected</p></div>
-              </div>
-            </div>
-
-            {/* The iPhone Frame */}
-            <motion.div 
-              animate={{ rotateY: [-5, 5, -5], rotateX: [2, -2, 2] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              className="relative w-[300px] h-[600px] bg-[#0a0a0a] rounded-[3rem] border-[8px] border-[#1a1a1a] shadow-2xl overflow-hidden z-10"
-              style={{ boxShadow: "0 0 50px rgba(71,142,206,0.2), inset 0 0 20px rgba(0,0,0,0.8)" }}
-            >
-              {/* Dynamic Island */}
-              <div className="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-30" />
-              
-              {/* Screen Content - Google Map */}
-              <div className="absolute inset-0 bg-[#e5e3df] rounded-[2.5rem] overflow-hidden">
-                {/* Map Iframe */}
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13622.52724033893!2d74.34828863295117!3d31.520369999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919045b11111111%3A0x1111111111111111!2sGulberg%20III%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1690000000000!5m2!1sen!2s" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) contrast(110%)" }} // Dark mode map trick
-                  allowFullScreen={false} 
-                  loading="lazy"
-                />
-                
-                {/* Floating Location Card Overlay */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[85%] bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-start gap-3">
-                  <div className="p-2 bg-primary/10 text-primary rounded-full shrink-0">
-                    <MapPin size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-gray-900">Auroxify HQ</h4>
-                    <p className="text-xs text-gray-600 mt-1">Gulberg III, Lahore, Pakistan</p>
-                    <button className="mt-2 text-xs font-semibold text-primary flex items-center gap-1">Get Directions <ArrowRight size={12} /></button>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+            <PhoneMockup />
           </motion.div>
         </div>
       </section>
 
-      {/* ── 2. QUICK INFO CARDS ── */}
-      <section className="py-12 border-y border-line bg-raised">
-        <div className="wrap max-w-6xl mx-auto grid sm:grid-cols-3 gap-6 px-5 md:px-0">
-          {[
-            { icon: Mail, title: "Email Us", val: "hello@auroxify.com" },
-            { icon: Phone, title: "Call Us", val: "+92 300 1234567" },
-            { icon: MessageCircle, title: "WhatsApp", val: "Available 24/7" },
-          ].map((item, i) => (
-            <motion.div 
+      {/* ── 2. QUICK CONTACT CARDS ── */}
+      <section className="border-y border-line bg-raised px-5 py-12 md:px-10">
+        <div className="wrap mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {CARDS.map((item, i) => (
+            <motion.a
               key={item.title}
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-              className="glass p-6 flex items-center gap-4 hover:border-primary/50 transition-colors cursor-pointer"
+              href={item.href}
+              target={item.href.startsWith("http") ? "_blank" : undefined}
+              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="glass flex min-w-0 items-center gap-4 p-5 transition-colors hover:border-primary/50"
             >
-              <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary"><item.icon size={22} /></span>
-              <div>
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
+                <item.icon size={22} />
+              </span>
+              <div className="min-w-0">
                 <p className="text-xs text-[var(--text-dim)]">{item.title}</p>
-                <p className="font-semibold text-white">{item.val}</p>
+                <p className="break-words text-sm font-semibold text-white">{item.val}</p>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </section>
 
-      {/* ── 3. FAQ / ACCORDION (Why contact us?) ── */}
-      <section className="py-24 px-5 md:px-10 relative">
-        <div className="wrap max-w-4xl mx-auto">
-          <div className="text-center mb-14">
-            <span className="eyebrow justify-center">Before You Ask</span>
-            <h2 className="h-lg mt-4">Frequently Asked Questions</h2>
+      {/* ── 3. WHAT HAPPENS NEXT ── */}
+      <section className="px-5 py-24 md:px-10">
+        <div className="wrap mx-auto max-w-5xl">
+          <div className="mb-14 text-center">
+            <span className="eyebrow justify-center">What Happens Next</span>
+            <h2 className="h-lg mt-4">From message to quote in three steps.</h2>
           </div>
-          
-          <div className="space-y-4">
+          <ol className="relative grid gap-6 md:grid-cols-3">
+            <div className="absolute left-[16%] right-[16%] top-7 hidden h-px bg-gradient-to-r from-transparent via-white/15 to-transparent md:block" />
+            {STEPS.map((s, i) => (
+              <motion.li
+                key={s.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, ease, delay: i * 0.1 }}
+                className="glass relative p-6 text-center"
+              >
+                <span className="relative mx-auto mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-primary/10 text-bright">
+                  <s.icon size={24} />
+                  <span className="absolute -right-2 -top-2 grid h-6 w-6 place-items-center rounded-full bg-primary font-mono text-[11px] font-bold text-white">
+                    {i + 1}
+                  </span>
+                </span>
+                <h3 className="font-heading text-lg font-semibold">{s.title}</h3>
+                <p className="mt-2 text-sm text-[var(--text-dim)]">{s.desc}</p>
+              </motion.li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ── 4. FAQ ── */}
+      <section className="relative border-t border-line bg-raised px-5 py-24 md:px-10">
+        <div className="wrap mx-auto max-w-3xl">
+          <div className="mb-12 text-center">
+            <span className="eyebrow justify-center">Before You Ask</span>
+            <h2 className="h-lg mt-4">Frequently asked questions</h2>
+          </div>
+
+          <div className="space-y-3">
             {FAQS.map((faq, i) => {
               const isOpen = openFaq === i;
               return (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className={`glass border ${isOpen ? 'border-brand-line' : 'border-line'} overflow-hidden rounded-2xl transition-colors duration-300`}
+                <div
+                  key={faq.q}
+                  className={`glass overflow-hidden rounded-2xl border transition-colors duration-300 ${isOpen ? "border-brand-line" : "border-line"}`}
                 >
-                  <button 
+                  <button
                     onClick={() => setOpenFaq(isOpen ? null : i)}
-                    className="w-full flex items-center justify-between p-6 text-left"
+                    aria-expanded={isOpen}
+                    className="flex min-h-[64px] w-full items-center justify-between gap-4 p-5 text-left sm:p-6"
                   >
-                    <span className="font-heading font-semibold text-lg">{faq.q}</span>
-                    <span className={`grid h-8 w-8 place-items-center rounded-full transition-colors ${isOpen ? 'bg-primary text-white' : 'bg-white/5 text-[var(--text-dim)]'}`}>
+                    <span className="font-heading text-base font-semibold sm:text-lg">{faq.q}</span>
+                    <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full transition-colors ${isOpen ? "bg-primary text-white" : "bg-white/5 text-[var(--text-dim)]"}`}>
                       {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                     </span>
                   </button>
-                  <AnimatePresence>
+                  <AnimatePresence initial={false}>
                     {isOpen && (
-                      <motion.div 
-                        initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease }}
-                        className="px-6 pb-6 text-[var(--text-mid)] text-sm leading-relaxed"
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease }}
+                        className="overflow-hidden"
                       >
-                        {faq.a}
+                        <p className="px-5 pb-6 text-sm leading-relaxed text-[var(--text-mid)] sm:px-6">{faq.a}</p>
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </motion.div>
+                </div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* ── 4. CTA ── */}
-      <section className="py-24 text-center px-5 relative overflow-hidden bg-raised border-t border-line">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(71,142,206,.12),transparent_70%)]" />
-        <div className="wrap relative z-10 max-w-3xl mx-auto">
-          <h2 className="h-lg">Prefer a direct call?</h2>
-          <p className="lead mx-auto mt-4 mb-8">Skip the form and talk to our team directly. We are available Mon-Sat, 9am to 6pm.</p>
-          <a href="https://wa.me/920000000000" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-            Chat on WhatsApp <MessageCircle size={16} />
-          </a>
+      {/* ── 5. CTA: TALK TO A HUMAN ── */}
+      <section className="relative overflow-hidden px-5 py-24 md:px-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(71,142,206,.14),transparent_70%)]" />
+        <div className="wrap relative z-10 mx-auto max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.9, ease }}
+            className="relative overflow-hidden rounded-[28px] border border-brand-line p-8 text-center md:p-14"
+            style={{ background: "linear-gradient(135deg, rgba(71,142,206,.18), rgba(8,14,28,.92) 60%)" }}
+          >
+            <div className="blob right-[-10%] top-[-30%] h-72 w-72" style={{ background: "var(--blob-violet)" }} />
+
+            <div className="relative z-10">
+              <span className="mx-auto inline-flex items-center gap-2 rounded-full border border-green-400/30 bg-green-400/10 px-4 py-1.5 text-xs font-medium text-green-300">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+                </span>
+                {HOURS}
+              </span>
+
+              <h2 className="h-lg mx-auto mt-6 max-w-2xl">Prefer to talk? We're one message away.</h2>
+              <p className="lead mx-auto mb-10 mt-4 max-w-xl">
+                Skip the form. Chat with our team on WhatsApp or give us a call and get answers on the spot.
+              </p>
+
+              <div className="mx-auto flex max-w-lg flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                  Chat on WhatsApp <MessageCircle size={16} />
+                </a>
+                <a
+                  href={`tel:${PHONE_TEL}`}
+                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-line-hover bg-white/5 px-6 text-sm font-semibold transition hover:border-brand-line hover:text-bright"
+                >
+                  <Phone size={16} /> Call {PHONE_DISPLAY}
+                </a>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
-
     </main>
   );
 }

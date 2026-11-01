@@ -1,99 +1,145 @@
-import { Metadata } from "next";
-import { ShieldCheck, Lock, Eye, FileText } from "lucide-react";
-import Link from "next/link";
+import type { Metadata } from "next";
+import { ShieldCheck, FileText, Eye, Lock, Cookie, Share2, Clock, UserCheck, Baby, RefreshCw } from "lucide-react";
+import LegalLayout, { P, UL, type LegalSection } from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Auroxify",
   description: "Learn how Auroxify collects, uses, and protects your personal data.",
 };
 
+// Update this date by hand whenever you change the policy.
+const UPDATED = "November 2, 2026";
+
+const SECTIONS: LegalSection[] = [
+  {
+    id: "collect",
+    title: "Information we collect",
+    icon: FileText,
+    body: (
+      <>
+        <P>When you visit our website or work with us, we may collect:</P>
+        <UL>
+          <li>
+            <strong className="text-white">Contact details:</strong> your name, email address, phone number and company when you fill in our contact form or message us.
+          </li>
+          <li>
+            <strong className="text-white">Usage data:</strong> IP address, browser type, device, pages visited and time spent, so we can improve the site.
+          </li>
+          <li>
+            <strong className="text-white">Project data:</strong> files, text, logins and other material you share so we can build or maintain your website.
+          </li>
+        </UL>
+      </>
+    ),
+  },
+  {
+    id: "use",
+    title: "How we use your information",
+    icon: Eye,
+    body: (
+      <UL>
+        <li>To reply to enquiries and prepare quotes.</li>
+        <li>To deliver, maintain and improve our web development, AI, SEO and maintenance services.</li>
+        <li>To send project updates, and newsletters or offers only if you agreed (you can opt out at any time).</li>
+        <li>To meet legal obligations and protect our rights.</li>
+      </UL>
+    ),
+  },
+  {
+    id: "sharing",
+    title: "Sharing your information",
+    icon: Share2,
+    body: (
+      <>
+        <P>We do not sell, trade or rent your personal information.</P>
+        <P>
+          We only share data with trusted tools that help us run the business, such as hosting, analytics (for example Google Analytics), payment providers (for example Stripe) and e-commerce platforms (for example Shopify), and only as much as they need. These providers have their own privacy policies, and we encourage you to read them.
+        </P>
+      </>
+    ),
+  },
+  {
+    id: "security",
+    title: "Data security",
+    icon: Lock,
+    body: (
+      <P>
+        We use reasonable technical and organisational measures to protect your information, including encrypted connections and access controls. No method of transfer or storage is 100% secure, so we cannot guarantee absolute security, but we take it seriously and will tell you if something affects your data.
+      </P>
+    ),
+  },
+  {
+    id: "cookies",
+    title: "Cookies and tracking",
+    icon: Cookie,
+    body: (
+      <P>
+        We use cookies to make the site work, understand traffic and see where visitors come from. You can turn cookies off in your browser settings, but some parts of the site may not work properly without them.
+      </P>
+    ),
+  },
+  {
+    id: "retention",
+    title: "How long we keep data",
+    icon: Clock,
+    body: (
+      <P>
+        We keep your information only as long as needed for the purposes above, or as the law requires. Enquiries that do not lead to a project are deleted after a reasonable period. Project files are kept while we work together and for support after launch, then removed or returned on request.
+      </P>
+    ),
+  },
+  {
+    id: "rights",
+    title: "Your rights",
+    icon: UserCheck,
+    body: (
+      <>
+        <P>You can ask us to:</P>
+        <UL>
+          <li>Show you the personal data we hold about you.</li>
+          <li>Correct anything that is wrong.</li>
+          <li>Delete your data, or stop us from using it for marketing.</li>
+        </UL>
+        <P>
+          Email <strong className="text-white">privacy@auroxify.com</strong> and we will respond as soon as we can.
+        </P>
+      </>
+    ),
+  },
+  {
+    id: "children",
+    title: "Children",
+    icon: Baby,
+    body: (
+      <P>
+        Our services are for businesses and adults. We do not knowingly collect personal data from children. If you think a child has sent us information, contact us and we will delete it.
+      </P>
+    ),
+  },
+  {
+    id: "changes",
+    title: "Changes to this policy",
+    icon: RefreshCw,
+    body: (
+      <P>
+        We may update this policy from time to time. The latest version is always on this page with the date it was last changed, so please check back now and then.
+      </P>
+    ),
+  },
+];
+
 export default function PrivacyPage() {
   return (
-    <main className="bg-base min-h-screen text-white pt-32 pb-24 px-5 md:px-10">
-      <div className="max-w-4xl mx-auto">
-        
-        {/* Header */}
-        <div className="mb-16 border-b border-line pb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono mb-4">
-            <ShieldCheck size={14} /> Legal Document
-          </div>
-          <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">Privacy Policy</h1>
-          <p className="text-[var(--text-dim)]">Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
-        </div>
-
-        {/* Content */}
-        <div className="space-y-12 text-[var(--text-mid)] leading-relaxed">
-          
-          <section>
-            <h2 className="text-2xl font-heading font-semibold text-white mb-4 flex items-center gap-3">
-              <FileText className="text-primary" size={24} /> 1. Information We Collect
-            </h2>
-            <p className="mb-4">
-              At Auroxify, we take your privacy seriously. When you visit our website or use our services, we may collect the following types of information:
-            </p>
-            <ul className="list-disc pl-5 space-y-2 marker:text-primary">
-              <li><strong>Personal Data:</strong> Name, email address, phone number, and company details when you fill out our contact forms.</li>
-              <li><strong>Usage Data:</strong> IP address, browser type, pages visited, and time spent on our site to help us improve user experience.</li>
-              <li><strong>Project Data:</strong> Any files, text, or information you share with us for the purpose of building your website or software.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-heading font-semibold text-white mb-4 flex items-center gap-3">
-              <Eye className="text-primary" size={24} /> 2. How We Use Your Information
-            </h2>
-            <p className="mb-4">We use the information we collect for the following purposes:</p>
-            <ul className="list-disc pl-5 space-y-2 marker:text-primary">
-              <li>To communicate with you regarding your projects, quotes, and inquiries.</li>
-              <li>To provide, maintain, and improve our web development and digital services.</li>
-              <li>To send you updates, newsletters, or promotional materials (you can opt out anytime).</li>
-              <li>To comply with legal obligations and protect our rights.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-heading font-semibold text-white mb-4 flex items-center gap-3">
-              <Lock className="text-primary" size={24} /> 3. Data Security & Protection
-            </h2>
-            <p>
-              We implement industry-standard security measures to protect your personal information. All sensitive data is encrypted, and we use secure servers for data storage. We do not sell, trade, or rent your personal information to third parties.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-heading font-semibold text-white mb-4">4. Cookies & Tracking</h2>
-            <p>
-              Our website uses cookies to enhance your browsing experience, analyze site traffic, and understand where our visitors come from. You can choose to disable cookies through your browser settings, though some features of the site may not function properly.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-heading font-semibold text-white mb-4">5. Third-Party Services</h2>
-            <p>
-              We may use third-party services like Google Analytics, Stripe, or Shopify for specific functionalities. These services have their own privacy policies, and we encourage you to review them. We are not responsible for how they handle your data.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-heading font-semibold text-white mb-4">6. Your Rights</h2>
-            <p>
-              You have the right to access, update, or delete your personal information. If you wish to exercise these rights, or if you have any questions about our privacy practices, please contact us at <strong className="text-white">privacy@auroxify.com</strong>.
-            </p>
-          </section>
-
-          <section className="bg-card border border-line p-6 md:p-8 rounded-2xl mt-12">
-            <h2 className="text-xl font-heading font-semibold text-white mb-2">Changes to This Policy</h2>
-            <p className="text-sm">
-              We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page. You are advised to review this page periodically for any changes.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-4 text-sm">
-              <Link href="/contact" className="text-primary hover:underline">Contact Support</Link>
-              <Link href="/terms" className="text-primary hover:underline">Terms of Service</Link>
-            </div>
-          </section>
-
-        </div>
-      </div>
-    </main>
+    <LegalLayout
+      badge="Legal Document"
+      BadgeIcon={ShieldCheck}
+      title="Privacy Policy"
+      intro="Your privacy matters to us. This page explains what we collect, why we collect it, and the control you have over it."
+      updatedLabel="Last updated"
+      updated={UPDATED}
+      sections={SECTIONS}
+      otherDoc={{ href: "/terms", label: "Terms of Service" }}
+      accent="primary"
+    />
   );
 }
