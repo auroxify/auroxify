@@ -110,9 +110,9 @@ export default function Navbar() {
           </ul>
 
           <div className="flex items-center gap-3">
-            <Link href="/contact" className="btn btn-primary hidden !min-h-[42px] !px-5 sm:inline-flex">
-              Get a Free Quote <ArrowUpRight size={16} />
-            </Link>
+          <Link href="/contact" className="btn btn-primary desktop-quote-btn">
+            Get a Free Quote <ArrowUpRight size={16} />
+          </Link>
             <button
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? "Close menu" : "Open menu"}

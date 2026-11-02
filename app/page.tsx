@@ -15,29 +15,74 @@ import {
 /* ═══════════════ EDIT YOUR CONTENT HERE ═══════════════ */
 const COMPANY = "Auroxify";
 const WHATSAPP = "https://wa.me/920000000000";
-const HERO_STATS = [["120+", "Projects done"], ["98%", "Happy clients"], ["24/7", "Support"]];
+const HERO_STATS = [
+  ["2026", "Founded"],
+  ["5+", "Digital services"],
+  ["100%", "Commitment"]
+]
 const TECH = ["WordPress", "Shopify", "Next.js", "React", "WooCommerce", "Node.js", "Google", "OpenAI", "Tailwind", "Stripe"];
-const COUNTERS = [{ to: 120, s: "+", l: "Projects delivered" }, { to: 98, s: "%", l: "Happy clients" }, { to: 45, s: "+", l: "Online shops launched" }, { to: 6, s: "+", l: "Years of experience" }];
+const COUNTERS = [{ to: 10, s: "+", l: "Projects delivered" }, { to: 98, s: "%", l: "Happy clients" },  { to: 100, s: "%", l: "Focus on quality" }, { to: 1, s: "+", l: "Years of experience" }];
 const SERVICES = [
-  { id: "ecommerce", icon: ShoppingCart, t: "Online Shops", d: "Sell your products online with a WordPress or Shopify store that is easy to run." },
-  { id: "web", icon: Code2, t: "Custom Websites", d: "A website made just for you. Fast, good-looking and built around your business." },
-  { id: "maintenance", icon: ShieldCheck, t: "Website Care", d: "We update, back up and protect your site so you never worry about it breaking." },
-  { id: "ai", icon: Bot, t: "AI for Business", d: "Add a smart chatbot or automation that saves you hours every single week." },
-  { id: "seo", icon: Search, t: "Google Ranking (SEO)", d: "We help people find you on Google, from the first fix to monthly reports." },
+  {
+    id: "ecommerce",
+    icon: ShoppingCart,
+    t: "E-commerce Development",
+    d: "Build an online store with WordPress, WooCommerce or Shopify to showcase and sell your products."
+  },
+  {
+    id: "web",
+    icon: Code2,
+    t: "Web Development",
+    d: "Modern, responsive websites designed around your business goals and audience."
+  },
+  {
+    id: "maintenance",
+    icon: ShieldCheck,
+    t: "Website Maintenance",
+    d: "Keep your website updated with ongoing improvements, troubleshooting and technical assistance."
+  },
+  {
+    id: "ai",
+    icon: Bot,
+    t: "AI & Automation",
+    d: "Explore practical AI tools and workflow automation to simplify repetitive business tasks."
+  },
+  {
+    id: "seo",
+    icon: Search,
+    t: "SEO Optimization",
+    d: "Improve your website's search visibility with technical SEO, on-page optimization and content improvements."
+  }
 ];
 const STEPS = [
-  { i: MessageCircle, t: "Tell us your idea", d: "Share what you need in a quick chat. No technical words, we promise." },
-  { i: Sparkles, t: "We design it", d: "You see how your website will look before we build anything." },
-  { i: Code2, t: "We build and test", d: "We build it, check it on every phone and screen, and fix every small issue." },
-  { i: Rocket, t: "You launch and grow", d: "Your site goes live. We stay with you to help you get more customers." },
+  {
+    i: MessageCircle,
+    t: "Understand Your Needs",
+    d: "We discuss your business, goals and project requirements before getting started."
+  },
+  {
+    i: Sparkles,
+    t: "Plan & Design",
+    d: "We create a design direction and project plan based on your requirements."
+  },
+  {
+    i: Code2,
+    t: "Develop & Test",
+    d: "We build your solution and test its functionality across different devices."
+  },
+  {
+    i: Rocket,
+    t: "Launch Your Project",
+    d: "After final approval, we help make your project live and provide agreed support."
+  }
 ];
 const WHY = [
-  { i: Tag, t: "Simple pricing", d: "You know the cost before we start. No surprise bills." },
-  { i: Zap, t: "Fast delivery", d: "Most websites are ready in a few weeks, not months." },
-  { i: Headphones, t: "Friendly support", d: "Real people reply to you, quickly and in plain words." },
-  { i: TrendingUp, t: "Built to rank on Google", d: "Every site is made so search engines can find it." },
-  { i: Lock, t: "Safe and backed up", d: "Your data is protected and saved every day." },
-  { i: MessageCircle, t: "We explain simply", d: "No confusing tech talk. You always know what is happening." },
+  { i: Tag, t: "Transparent Pricing", d: "Clear project estimates based on your requirements and scope." },
+  { i: Zap, t: "Modern Development", d: "We use modern technologies to build responsive and reliable digital solutions." },
+  { i: Headphones, t: "Client-Focused Approach", d: "We value your ideas and keep your requirements at the center of every project." },
+  { i: TrendingUp, t: "SEO-Friendly Foundations", d: "We follow SEO best practices to help improve your website's search visibility." },
+  { i: Lock, t: "Quality-Focused Work", d: "We focus on clean implementation, functionality and a smooth user experience." },
+  { i: MessageCircle, t: "Clear Communication", d: "We keep you informed throughout the project with straightforward communication." },
 ];
 const PROJECTS = [
   ["Fashion Store", "Online shop", "#2B6DAE", "#06b6d4"], ["Fitness App", "Custom website", "#7c3aed", "#a855f7"],
@@ -45,11 +90,11 @@ const PROJECTS = [
   ["Education Portal", "Website + AI", "#06b6d4", "#7c3aed"],
 ];
 const FAQ = [
-  ["How long does a website take?", "A simple website takes about 2 to 3 weeks. Online shops and custom projects take a little longer. We tell you the exact time before we start."],
-  ["Can you fix my existing website?", "Yes. We can fix errors, make it faster, or give it a fresh new look without starting from zero."],
-  ["Do I need technical knowledge?", "Not at all. We explain everything in simple words and show you how to manage your site yourself."],
-  ["How much does it cost?", "It depends on what you need. Tell us your idea and we will send a clear price, usually within one day."],
-  ["Do you help after launch?", "Yes. Our care plans cover updates, backups, security and fixes, so your website stays fast and safe."],
+  ["How long does a website take?", "Project timelines depend on the website's size, features and complexity. We'll discuss the estimated timeline with you before development begins."],
+  ["Can you improve my existing website?", "Yes. We can help redesign your website, improve its functionality, fix issues and create a better user experience."],
+  ["Do I need technical knowledge?", "No technical knowledge is required. Just share your ideas and business requirements, and we'll guide you through the development process."],
+  ["How much does a website cost?", "Pricing depends on your project requirements and complexity. Contact us to discuss your idea and receive a project estimate."],
+  ["Do you provide support after launch?", "Post-launch support and website maintenance can be discussed based on your project requirements and the services included in your agreement."]
 ];
 
 /* ═══════════════ SHARED HELPERS ═══════════════ */
@@ -186,12 +231,12 @@ function ChatDemo({ className = "" }: { className?: string }) {
   }, [n]);
   const typing = n < CHAT.length && CHAT[n][0] === "ai";
   return (
-    <div className={`w-full max-w-[340px] rounded-3xl border border-line-hover bg-base/85 p-4 shadow-[var(--shadow-card)] backdrop-blur-xl ${className}`} aria-label="Example AI chatbot conversation">
+    <div className={`w-full max-w-full sm:max-w-[340px] rounded-3xl border border-line-hover bg-base/85 p-4 shadow-[var(--shadow-card)] backdrop-blur-xl ${className}`} aria-label="Example AI chatbot conversation">
       <div className="mb-3 flex items-center gap-3 border-b border-line pb-3">
         <span className="grid h-9 w-9 place-items-center rounded-full" style={{ background: "var(--grad-infra)" }}><Bot size={18} /></span>
         <div><p className="text-sm font-semibold">Shop Assistant</p><p className="flex items-center gap-1.5 text-[11px] text-[var(--text-dim)]"><span className="h-1.5 w-1.5 rounded-full bg-green-400" /> Online</p></div>
       </div>
-      <div className="flex min-h-[200px] flex-col gap-2">
+<div className="flex min-h-[140px] sm:min-h-[200px] flex-col gap-1.5 sm:gap-2">
         {CHAT.slice(0, n).map(([w, t], i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }}
             className={`max-w-[85%] rounded-2xl px-3.5 py-2 text-sm ${w === "u" ? "self-end bg-primary text-white" : "self-start border border-line-hover bg-card text-[var(--text-mid)]"}`}>{t}</motion.div>
@@ -376,7 +421,7 @@ function Stage({ i }: { i: number }) {
   );
   if (i === 3) return (
     <div className="relative flex w-full items-center justify-center">
-      <Orb className="absolute w-[85%] max-w-[380px] opacity-70" /><ChatDemo className="relative" />
+      <Orb className="hidden sm:block absolute w-[85%] max-w-[380px] opacity-70" /><ChatDemo className="relative" />
     </div>
   );
   return (
@@ -497,7 +542,7 @@ function Shop() {
   return (
     <section className="sec bg-base" aria-labelledby="shop-h">
       <div className="wrap">
-        <Head eyebrow="Online shops" title={<span id="shop-h">Your own shop, open all day and night.</span>} sub="We build stores that look great, load fast and make buying easy." />
+        <Head eyebrow="Online shops" title={<span id="shop-h">Take your products online with confidence.</span>} sub="We develop e-commerce experiences that make it easier for businesses to showcase products, manage orders and reach customers online." />
         <div className="mt-14 grid gap-4 md:grid-cols-3 md:grid-rows-3">
           <Reveal className="md:col-span-2 md:row-span-3"><div className="glass spot h-full overflow-hidden" onMouseMove={spot}><TiltStore /></div></Reveal>
           {small.map(({ i: Icon, t, d }, k) => (
@@ -534,7 +579,7 @@ function AISection() {
           <Reveal delay={0.25} className="mt-8"><Link href="/services#ai" className="btn btn-ghost">See AI services <ArrowRight size={16} /></Link></Reveal>
         </div>
         <div className="relative flex h-[440px] items-center justify-center sm:h-[520px]">
-          <Orb className="absolute w-[92%] max-w-[480px]" />
+          <Orb className="hidden sm:block absolute w-[92%] max-w-[480px]" />
           <Reveal className="relative flex w-full justify-center lg:justify-end"><Float d={5} a={8}><ChatDemo /></Float></Reveal>
         </div>
       </div>
@@ -574,7 +619,7 @@ function Seo() {
           </div>
         </Reveal>
         <div className="order-1 lg:order-2">
-          <Head eyebrow="SEO and growth" title={<span id="seo-h">Be the first name people see on Google.</span>} sub="We take care of your SEO from start to finish, so you get customers without paying for ads." />
+          <Head eyebrow="SEO and growth" title={<span id="seo-h">Build a stronger presence on Google.</span>} sub="We help businesses improve their online visibility through technical SEO, on-page optimization and search-friendly website structures." />
           <div className="mt-8 space-y-4">
             {pts.map(([t, d], i) => (
               <Reveal key={t} delay={i * 0.1}>
@@ -584,10 +629,6 @@ function Seo() {
                 </div>
               </Reveal>
             ))}
-          </div>
-          <div className="mt-8 flex gap-10">
-            <div><p className="font-heading text-5xl font-bold text-gold">+<Counter to={240} />%</p><p className="text-sm text-[var(--text-dim)]">more visitors</p></div>
-            <div><p className="font-heading text-5xl font-bold text-gold"><Counter to={3} />x</p><p className="text-sm text-[var(--text-dim)]">more leads</p></div>
           </div>
         </div>
       </div>
@@ -644,7 +685,7 @@ function Why() {
         <motion.div key={i} className="blob h-80 w-80" style={{ left: l as string, top: t as string, background: bg as string }} animate={{ x: [0, 60, -30, 0], y: [0, -40, 30, 0] }} transition={{ duration: d as number, repeat: Infinity, ease: "easeInOut" }} />
       ))}
       <div className="wrap">
-        <Head center eyebrow="Why choose us" title={<span id="why-h">A team that makes it easy for you.</span>} />
+        <Head center eyebrow="Why choose us" title={<span id="why-h">A thoughtful approach to every project.</span>} />
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {WHY.map(({ i: Icon, t, d }, k) => (
             <Reveal key={t} delay={(k % 3) * 0.1} className={k % 3 === 1 ? "lg:translate-y-8" : ""}>
@@ -662,7 +703,7 @@ function Why() {
 
 /* ═══════════════ 10. FAQ ═══════════════ */
 function Faq() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
   return (
     <section className="sec bg-base" aria-labelledby="faq-h">
       <div className="wrap grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">

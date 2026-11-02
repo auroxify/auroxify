@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowUp, ArrowUpRight, Mail, MapPin } from "lucide-react";
 import { SOCIALS } from "./Socials";
 
-const EMAIL = "hello@auroxify.com";
+const EMAIL = "info@auroxify.com";
 const LOCATION = "Karachi, Pakistan";
 
 const COLS = [

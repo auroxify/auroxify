@@ -19,49 +19,47 @@ const FOUNDERS = [
   {
     name: "Muhammad Qasim",
     role: "Co-Founder & CEO",
-    desc: "Sets the vision and keeps every project tied to real business results, from the first call to the final launch.",
+    desc: "Focuses on business direction, client relationships and shaping digital solutions around real business needs.",
     img: "/founder2.png",
     linkedin: "#",
   },
   {
     name: "Hafiz Hamza",
     role: "Co-Founder & CTO",
-    desc: "Leads engineering and makes sure every line of code is fast, secure and scalable, built to grow with your business.",
+    desc: "Focuses on technology and development, turning ideas into functional, responsive and user-friendly digital experiences.",
     img: "/founder1.jpeg",
     linkedin: "#",
   },
 ];
 
 const STATS = [
-  { to: 120, s: "+", l: "Projects Delivered" },
+  { to: 10, s: "+", l: "Projects Delivered" },
   { to: 98, s: "%", l: "Client Satisfaction" },
-  { to: 6, s: "+", l: "Years Experience" },
-  { to: 45, s: "+", l: "Team Members" },
+  { to: 1, s: "+", l: "Years Experience" },
+  { to: 2, s: "+", l: "Team Members" },
 ];
 
 const TIMELINE = [
-  { year: "2020", title: "The Beginning", desc: "Auroxify started in a small room with 2 founders and one big dream: to build websites that actually work." },
-  { year: "2021", title: "First 50 Clients", desc: "Word spread fast. We delivered 50+ projects and built a reputation for speed, quality, and honest pricing." },
-  { year: "2022", title: "Going Global", desc: "We expanded beyond borders, serving clients from the US, UK, UAE, and Pakistan." },
-  { year: "2023", title: "AI Integration", desc: "We added AI-powered solutions (chatbots, automation, and smart analytics) to our toolkit." },
-  { year: "2024", title: "Team of 45+", desc: "What started as 2 people is now a full team of designers, developers, and marketers." },
-  { year: "2025", title: "The Future", desc: "We're building the next generation of digital experiences. And we're just getting started." },
+  { year: "01", title: "Understanding Your Needs", desc: "We begin by understanding your business, goals and project requirements." },
+  { year: "02", title: "Planning the Solution", desc: "We define the project scope, structure and direction before development begins." },
+  { year: "03", title: "Design & Development", desc: "We bring ideas to life through thoughtful design and practical development." },
+  { year: "04", title: "Testing & Launch", desc: "We review the completed work, make improvements and prepare it for launch." },
 ];
 
 const VALUES = [
-  { icon: Target, title: "Results First", desc: "We measure our success by your growth. Every decision is made with your ROI in mind." },
-  { icon: Zap, title: "Lightning Fast", desc: "No delays, no excuses. We deliver on time, every time, because your time is money." },
-  { icon: Shield, title: "Total Transparency", desc: "Clear pricing, honest timelines, and real communication. No hidden surprises." },
-  { icon: Heart, title: "Client Obsession", desc: "Your goals become our goals. We treat your business like it's our own." },
-  { icon: Award, title: "Premium Quality", desc: "We don't cut corners. Every pixel, every line of code is crafted with care." },
-  { icon: Globe, title: "Global Mindset", desc: "Serving clients worldwide with world-class standards and local understanding." },
+  { icon: Target, title: "Purpose-Driven Work", desc: "We focus on understanding your goals and creating solutions that serve a clear purpose." },
+  { icon: Zap, title: "Practical Innovation", desc: "We explore modern technologies and use them where they bring real value." },
+  { icon: Shield, title: "Honest Communication", desc: "We believe in clear expectations, transparent discussions and realistic commitments." },
+  { icon: Heart, title: "Client Collaboration", desc: "We value your input and work closely with you throughout the project." },
+  { icon: Award, title: "Attention to Detail", desc: "We care about functionality, design consistency and the overall user experience." },
+  { icon: Globe, title: "Continuous Learning", desc: "We keep exploring new tools and technologies to improve the solutions we build." },
 ];
 
 const TEAM_CULTURE = [
-  "Remote-first, flexible work environment",
-  "Continuous learning and skill development",
-  "Open communication at every level",
-  "Celebrating wins, big and small",
+  "A focus on practical digital solutions",
+  "Continuous learning and improvement",
+  "Clear and straightforward communication",
+  "Attention to quality and detail",
 ];
 
 const TOOLS = [
@@ -70,17 +68,32 @@ const TOOLS = [
 ];
 
 const TESTIMONIALS = [
-  { name: "Sarah Johnson", role: "CEO, Bloom Boutique", text: "Auroxify transformed our online store. Sales jumped 3x in the first month. Absolute pros.", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop" },
-  { name: "Michael Chen", role: "Founder, TechFlow", text: "The team delivered our website ahead of schedule. Communication was flawless. Highly recommended.", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop" },
-  { name: "Ayesha Malik", role: "Owner, Cafe Aroma", text: "Our Google ranking went from page 5 to page 1. We now get walk-ins daily. Thank you Auroxify!", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop" },
+  {
+    name: "Our Approach",
+    role: "Understanding First",
+    text: "Every project starts with understanding the client's goals, requirements and expectations.",
+    img: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=200&auto=format&fit=crop"
+  },
+  {
+    name: "Our Focus",
+    role: "Quality Development",
+    text: "We focus on thoughtful design, practical technology and creating useful digital experiences.",
+    img: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=200&auto=format&fit=crop"
+  },
+  {
+    name: "Our Commitment",
+    role: "Clear Communication",
+    text: "We believe in keeping project expectations clear and maintaining open communication throughout the process.",
+    img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=200&auto=format&fit=crop"
+  },
 ];
 
 const FAQ = [
-  ["What makes Auroxify different?", "We combine premium quality with honest pricing. No hidden fees, no jargon, just real results delivered on time."],
-  ["Do you work with small businesses?", "Absolutely. From solo founders to enterprises, we tailor solutions to fit your budget and goals."],
-  ["How long does a typical project take?", "Most websites take 2-4 weeks. Complex projects like e-commerce or AI tools may take 6-8 weeks."],
-  ["Do you offer ongoing support?", "Yes. Our care plans cover updates, backups, security, and fixes so your site stays fast and safe."],
-  ["Which countries do you serve?", "We serve clients globally: US, UK, UAE, Canada, Australia, Pakistan, and beyond."],
+  ["What services does Auroxify offer?", "We offer web development, e-commerce solutions, website maintenance, AI automation and SEO services."],
+  ["Do you work with small businesses?", "Yes. We welcome businesses of different sizes and discuss solutions according to their goals and requirements."],
+  ["How long does a typical project take?", "Project timelines depend on the requirements, features and complexity. We discuss the estimated timeline before development begins."],
+  ["Do you offer ongoing support?", "Post-launch support and maintenance can be discussed based on your project requirements and agreed services."],
+  ["Which countries do you work with?", "We are open to working with clients locally and internationally, depending on project requirements."],
 ];
 
 /* ═══════ COMPONENTS ═══════ */
@@ -112,7 +125,7 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
 
 /* ═══════ PAGE ═══════ */
 export default function About() {
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <main className="min-h-screen overflow-x-clip bg-base text-white">
@@ -140,7 +153,7 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.2 }}
             className="lead mx-auto mt-6"
           >
-            Founded in 2020, Auroxify started with a simple goal: to build websites and digital tools that actually help businesses grow. No jargon, just results.
+            Founded in 2026, Auroxify is a digital solutions agency focused on web development, e-commerce and modern digital experiences. We bring ideas to life through thoughtful design and practical technology.
           </motion.p>
 
           <motion.div
@@ -237,8 +250,8 @@ export default function About() {
       <section className="relative border-y border-line bg-raised px-5 py-24 md:px-10">
         <div className="wrap mx-auto max-w-4xl">
           <div className="mb-16 text-center">
-            <span className="eyebrow justify-center">Our Journey</span>
-            <h2 className="h-lg mt-4">From 2 people to a global team.</h2>
+          <span className="eyebrow justify-center">How We Work</span>
+          <h2 className="h-lg mt-4">A clear approach to every project.</h2>
           </div>
 
           <div className="relative">
@@ -272,7 +285,7 @@ export default function About() {
                 </span>
                 <h3 className="font-heading text-2xl font-bold">Our Mission</h3>
                 <p className="mt-4 leading-relaxed text-[var(--text-mid)]">
-                  To empower businesses of every size with digital tools that are simple, powerful, and built to grow. We believe every business deserves a world-class online presence, without the world-class price tag.
+                    To help businesses build a meaningful online presence through practical digital solutions, thoughtful design and reliable development. We aim to make technology more accessible and useful for businesses of all sizes.
                 </p>
               </div>
             </Reveal>
@@ -283,7 +296,7 @@ export default function About() {
                 </span>
                 <h3 className="font-heading text-2xl font-bold">Our Vision</h3>
                 <p className="mt-4 leading-relaxed text-[var(--text-mid)]">
-                  To become the go-to digital partner for businesses worldwide, known not just for what we build, but for how we build it: with honesty, speed, and a relentless focus on results.
+                    To grow into a trusted digital solutions agency known for quality work, honest communication and a thoughtful approach to solving business challenges.
                 </p>
               </div>
             </Reveal>
@@ -330,9 +343,9 @@ export default function About() {
           </Reveal>
           <div className="min-w-0">
             <span className="eyebrow">Our Culture</span>
-            <h2 className="h-lg mt-4">A team that loves what it does.</h2>
+            <h2 className="h-lg mt-4">Built on ideas, learning and collaboration.</h2>
             <p className="lead mt-4">
-              We're a remote-first team of designers, developers, and marketers who genuinely care about the work we do.
+              We believe good digital work starts with understanding people, solving real problems and continuously improving our skills.
             </p>
             <ul className="mt-8 space-y-4">
               {TEAM_CULTURE.map((item, i) => (
@@ -375,8 +388,8 @@ export default function About() {
       <section className="relative px-5 py-24 md:px-10">
         <div className="wrap mx-auto max-w-6xl">
           <div className="mb-14 text-center">
-            <span className="eyebrow justify-center">What Clients Say</span>
-            <h2 className="h-lg mt-4">Trusted by businesses worldwide.</h2>
+          <span className="eyebrow justify-center">What We Believe</span>
+          <h2 className="h-lg mt-4">The principles behind our work.</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {TESTIMONIALS.map((t, i) => (
@@ -416,7 +429,7 @@ export default function About() {
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : i)}
                     aria-expanded={isOpen}
-                    className="flex min-h-[64px] w-full items-center justify-between gap-4 p-5 text-left sm:p-6"
+                  className="faq-question flex min-h-[64px] w-full items-center justify-between gap-4 p-5 text-left sm:p-6"
                   >
                     <span className="font-heading text-base font-semibold sm:text-lg">{q}</span>
                     <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full transition-colors ${isOpen ? "bg-primary text-white" : "bg-white/5 text-[var(--text-dim)]"}`}>
@@ -432,7 +445,9 @@ export default function About() {
                         transition={{ duration: 0.3, ease }}
                         className="overflow-hidden"
                       >
-                        <p className="px-5 pb-6 text-sm leading-relaxed text-[var(--text-mid)] sm:px-6">{a}</p>
+                        <p className="faq-answer px-5 pb-6 text-sm leading-relaxed sm:px-6">
+                          {a}
+                        </p>
                       </motion.div>
                     )}
                   </AnimatePresence>

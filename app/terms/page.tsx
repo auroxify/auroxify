@@ -4,7 +4,7 @@ import LegalLayout, { P, UL, type LegalSection } from "@/app/components/LegalLay
 
 export const metadata: Metadata = {
   title: "Terms of Service | Auroxify",
-  description: "Read the terms and conditions for using Auroxify's web development services.",
+  description: "Review the terms, responsibilities and conditions that apply when using Auroxify's website and digital services.",
 };
 
 // Update this date by hand whenever you change the terms.
@@ -29,11 +29,11 @@ const SECTIONS: LegalSection[] = [
       <>
         <P>Auroxify provides digital services, including but not limited to:</P>
         <UL>
-          <li>Website design and development (custom, WordPress, Shopify).</li>
-          <li>E-commerce store setup and optimisation.</li>
-          <li>AI integration and automation.</li>
-          <li>Search Engine Optimisation (SEO) and digital marketing.</li>
-          <li>Website maintenance and security care plans.</li>
+          <li>Website design and development.</li>
+          <li>E-commerce store development using platforms such as WooCommerce and Shopify.</li>
+          <li>AI integrations and automation solutions, depending on project requirements.</li>
+          <li>Search Engine Optimisation (SEO).</li>
+          <li>Website maintenance and ongoing support.</li>
         </UL>
         <P>The exact scope, deliverables and timeline of each project are written in the quote you approve.</P>
       </>
@@ -74,7 +74,7 @@ const SECTIONS: LegalSection[] = [
     icon: LifeBuoy,
     body: (
       <P>
-        Every project includes 30 days of free bug-fixing after launch. After that, you can choose one of our monthly maintenance plans or ask for one-off work, which we will quote separately.
+        Post-launch support and maintenance depend on the services agreed for each project. Any included support period, bug fixes or ongoing maintenance will be clearly mentioned in the project proposal or agreement. Additional work may be quoted separately.
       </P>
     ),
   },
@@ -84,7 +84,7 @@ const SECTIONS: LegalSection[] = [
     icon: Copyright,
     body: (
       <P>
-        Once you have paid in full, you own the final website design, content and code we made for you. Auroxify may show the finished project in its portfolio and marketing, unless we have signed a Non-Disclosure Agreement (NDA) that says otherwise. Third-party tools, fonts, plugins and stock assets stay under their own licences.
+        Ownership and usage rights for project deliverables will be agreed upon with the client before or during the project. Unless otherwise agreed in writing, third-party tools, fonts, plugins, themes and stock assets remain subject to their respective licences. Auroxify will only use client projects in its portfolio or marketing where permission has been granted.
       </P>
     ),
   },
@@ -94,7 +94,7 @@ const SECTIONS: LegalSection[] = [
     icon: EyeOff,
     body: (
       <P>
-        We keep your business information private and are happy to sign an NDA before you share details. We ask that you also keep our quotes and working methods private.
+        We take reasonable steps to keep client information and project details confidential. Any specific confidentiality requirements or Non-Disclosure Agreements (NDAs) can be discussed and agreed upon in writing before sensitive information is shared.
       </P>
     ),
   },

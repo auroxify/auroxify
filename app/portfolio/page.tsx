@@ -209,7 +209,7 @@ function LaptopMockup() {
         </span>
         <div>
           <p className="text-[11px] text-[var(--text-dim)]">Projects done</p>
-          <p className="font-heading text-base font-bold sm:text-lg">120+</p>
+          <p className="font-heading text-white font-bold sm:text-lg">10+</p>
         </div>
       </motion.div>
     </div>

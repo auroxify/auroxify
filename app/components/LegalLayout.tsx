@@ -140,8 +140,8 @@ export default function LegalLayout({
               <h2 className="font-heading text-xl font-semibold text-white">Questions about this page?</h2>
               <p className="mt-2 text-sm">
                 Write to us and a real person will reply. For anything about your data or your project terms, email{" "}
-                <a href="mailto:hello@auroxify.com" className={`font-semibold ${a.link} hover:underline`}>
-                  hello@auroxify.com
+                <a href="mailto:info@auroxify.com" className={`font-semibold ${a.link} hover:underline`}>
+                  info@auroxify.com
                 </a>
                 .
               </p>

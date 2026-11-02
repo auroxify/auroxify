@@ -11,7 +11,7 @@ import { useSearchParams } from "next/navigation";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 /* ── EDIT YOUR REAL DETAILS HERE ── */
-const EMAIL = "hello@auroxify.com";
+const EMAIL = "info@auroxify.com";
 const PHONE_DISPLAY = "+92 300 1234567";
 const PHONE_TEL = "+923001234567";
 const WHATSAPP = "920000000000"; // country code + number, no + or spaces
@@ -26,25 +26,26 @@ const WA_LINK = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(WHATSAPP_ME
 const SERVICES = [
   { id: "web", label: "Web Development" },
   { id: "ecommerce", label: "E-Commerce" },
-  { id: "ai", label: "AI Integration" },
+  { id: "ai", label: "AI Automation" },
   { id: "seo", label: "SEO" },
-  { id: "maintenance", label: "Maintenance" },
+  { id: "maintenance", label: "Website Maintenance" },
   { id: "other", label: "Other" },
 ];
 
 const BUDGETS = ["Under $500", "$500 – $1,500", "$1,500 – $5,000", "$5,000+", "Not sure yet"];
 
 const FAQS = [
-  { q: "How soon can we start?", a: "Once we finalize the requirements and you approve the quote, we can start within 24 to 48 hours." },
-  { q: "Do you sign NDAs?", a: "Absolutely. We respect your privacy and intellectual property, and we are happy to sign an NDA before we discuss the details." },
-  { q: "What is your payment structure?", a: "Usually 50% upfront to kick off the project and the remaining 50% on successful completion and testing." },
-  { q: "Do you provide support after launch?", a: "Yes. We offer 30 days of free bug-fixing after launch, and then you can choose from our monthly maintenance plans." },
+  { q: "What services does Auroxify offer?", a: "We provide web development, e-commerce solutions, website maintenance, AI automation and SEO services." },
+  { q: "How do I get started?", a: "Simply fill out our contact form with your project details. We'll review your requirements and discuss the next steps." },
+  { q: "How much does a project cost?", a: "Pricing depends on your project scope, features and requirements. We'll discuss your needs and provide a suitable quotation." },
+  { q: "How long will my project take?", a: "Timelines vary depending on the complexity and requirements of each project. We'll discuss an estimated timeline before starting." },
+  { q: "Do you provide support after launch?", a: "Yes. Ongoing maintenance and post-launch support can be discussed according to your project requirements." },
 ];
 
 const STEPS = [
-  { icon: Search, title: "We review your message", desc: "A real person reads it and replies within 24 hours." },
-  { icon: PhoneCall, title: "Free discovery call", desc: "We talk through your goals, timeline and budget. No pressure." },
-  { icon: FileText, title: "You get a clear quote", desc: "Scope, timeline and price in writing before anything starts." },
+  { icon: Search, title: "Share Your Requirements", desc: "Tell us about your business, project goals and what you want to achieve." },
+  { icon: PhoneCall, title: "Discuss Your Project", desc: "We'll discuss your ideas, requirements, timeline and expectations." },
+  { icon: FileText, title: "Get a Project Proposal", desc: "Receive a clear outline of the proposed solution, estimated timeline and pricing." },
 ];
 
 const FIELD =
@@ -103,7 +104,7 @@ function ContactForm() {
             </span>
             <h3 className="mt-6 font-heading text-2xl font-bold">Message sent!</h3>
             <p className="mt-2 max-w-sm text-sm text-[var(--text-mid)]">
-              Thanks for reaching out. We'll reply within 24 hours. In a hurry? Message us on WhatsApp.
+                Thank you for contacting Auroxify. We appreciate your interest and look forward to discussing your project.
             </p>
             <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
@@ -217,7 +218,7 @@ function ContactForm() {
             </button>
 
             <p className="flex items-center justify-center gap-2 text-center text-xs text-[var(--text-dim)]">
-              <ShieldCheck size={14} className="shrink-0 text-green-400" /> Your details stay private. We're happy to sign an NDA.
+              <ShieldCheck size={14} className="shrink-0 text-green-400" />Your information will only be used to discuss your project and respond to your inquiry.
             </p>
           </motion.form>
         )}
@@ -231,27 +232,6 @@ function PhoneMockup() {
   return (
     <div className="relative mx-auto flex w-full max-w-md justify-center py-6 [perspective:1000px]">
       <div className="absolute inset-x-10 inset-y-10 rounded-full bg-gradient-to-tr from-primary/25 to-violet/25 blur-3xl" />
-
-      {/* floating cards */}
-      <div className="glass absolute left-0 top-10 z-20 hidden items-center gap-3 rounded-2xl border-brand-line bg-card/80 p-4 backdrop-blur-md [animation:bounce_4s_infinite] sm:flex">
-        <span className="rounded-lg bg-green-500/20 p-2 text-green-400">
-          <Clock size={18} />
-        </span>
-        <div>
-          <p className="text-xs text-[var(--text-dim)]">Response time</p>
-          <p className="text-sm font-bold">Under 24h</p>
-        </div>
-      </div>
-      <div className="glass absolute bottom-16 right-0 z-20 hidden items-center gap-3 rounded-2xl border-violet/30 bg-card/80 p-4 backdrop-blur-md [animation:bounce_5s_infinite_reverse] sm:flex">
-        <span className="rounded-lg bg-violet-500/20 p-2 text-violet-400">
-          <ShieldCheck size={18} />
-        </span>
-        <div>
-          <p className="text-xs text-[var(--text-dim)]">100% secure</p>
-          <p className="text-sm font-bold">NDA protected</p>
-        </div>
-      </div>
-
       {/* phone */}
       <motion.div
         animate={{ rotateY: [-5, 5, -5], rotateX: [2, -2, 2] }}
@@ -297,7 +277,7 @@ function PhoneMockup() {
 
 /* ═══════ PAGE ═══════ */
 export default function ContactPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const CARDS = [
     { icon: Mail, title: "Email us", val: EMAIL, href: `mailto:${EMAIL}` },
@@ -333,7 +313,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.2 }}
               className="lead mb-10 mt-6"
             >
-              Have a project in mind? Fill out the form and our team will get back to you within 24 hours.
+              Have an idea or project in mind? Tell us what you're looking to build, and let's discuss how we can bring it to life.
             </motion.p>
 
             <motion.div
@@ -432,9 +412,9 @@ export default function ContactPage() {
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : i)}
                     aria-expanded={isOpen}
-                    className="flex min-h-[64px] w-full items-center justify-between gap-4 p-5 text-left sm:p-6"
+                    className="flex min-h-[64px] w-full items-center justify-between gap-4 p-5 text-left text-white sm:p-6"
                   >
-                    <span className="font-heading text-base font-semibold sm:text-lg">{faq.q}</span>
+                    <span className="font-heading text-base font-semibold text-white sm:text-lg">{faq.q}</span>
                     <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full transition-colors ${isOpen ? "bg-primary text-white" : "bg-white/5 text-[var(--text-dim)]"}`}>
                       {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                     </span>
@@ -482,9 +462,9 @@ export default function ContactPage() {
                 {HOURS}
               </span>
 
-              <h2 className="h-lg mx-auto mt-6 max-w-2xl">Prefer to talk? We're one message away.</h2>
+              <h2 className="h-lg mx-auto mt-6 max-w-2xl">Let's discuss your next big idea.</h2>
               <p className="lead mx-auto mb-10 mt-4 max-w-xl">
-                Skip the form. Chat with our team on WhatsApp or give us a call and get answers on the spot.
+                Have questions or need to discuss your project? Reach out to us directly and let's explore the possibilities.
               </p>
 
               <div className="mx-auto flex max-w-lg flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">

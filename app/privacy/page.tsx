@@ -4,7 +4,7 @@ import LegalLayout, { P, UL, type LegalSection } from "@/app/components/LegalLay
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Auroxify",
-  description: "Learn how Auroxify collects, uses, and protects your personal data.",
+  description: "Learn how Auroxify collects, uses, and protects the personal information you share with us.",
 };
 
 // Update this date by hand whenever you change the policy.
@@ -26,7 +26,7 @@ const SECTIONS: LegalSection[] = [
             <strong className="text-white">Usage data:</strong> IP address, browser type, device, pages visited and time spent, so we can improve the site.
           </li>
           <li>
-            <strong className="text-white">Project data:</strong> files, text, logins and other material you share so we can build or maintain your website.
+            <strong className="text-white">Project information:</strong> details, messages, files and other materials you voluntarily share with us when discussing or working on a project.
           </li>
         </UL>
       </>
@@ -38,10 +38,11 @@ const SECTIONS: LegalSection[] = [
     icon: Eye,
     body: (
       <UL>
-        <li>To reply to enquiries and prepare quotes.</li>
-        <li>To deliver, maintain and improve our web development, AI, SEO and maintenance services.</li>
-        <li>To send project updates, and newsletters or offers only if you agreed (you can opt out at any time).</li>
-        <li>To meet legal obligations and protect our rights.</li>
+        <li>To respond to enquiries and discuss potential projects.</li>
+        <li>To understand your requirements and prepare project proposals or quotations.</li>
+        <li>To provide and improve our web development, e-commerce, SEO and digital services.</li>
+        <li>To communicate with you about your project and provide relevant updates.</li>
+        <li>To protect our website and comply with applicable legal requirements.</li>
       </UL>
     ),
   },
@@ -53,7 +54,7 @@ const SECTIONS: LegalSection[] = [
       <>
         <P>We do not sell, trade or rent your personal information.</P>
         <P>
-          We only share data with trusted tools that help us run the business, such as hosting, analytics (for example Google Analytics), payment providers (for example Stripe) and e-commerce platforms (for example Shopify), and only as much as they need. These providers have their own privacy policies, and we encourage you to read them.
+          We may share relevant information with service providers that help us operate our website and communicate with visitors, such as website hosting, email and contact form processing services. These providers handle information according to their own privacy policies.
         </P>
       </>
     ),
@@ -74,7 +75,7 @@ const SECTIONS: LegalSection[] = [
     icon: Cookie,
     body: (
       <P>
-        We use cookies to make the site work, understand traffic and see where visitors come from. You can turn cookies off in your browser settings, but some parts of the site may not work properly without them.
+        Our website may use essential cookies or similar technologies to support basic functionality and improve your browsing experience. If we introduce analytics or other tracking tools, this policy will be updated to explain how they are used. You can manage cookies through your browser settings.
       </P>
     ),
   },
@@ -84,7 +85,7 @@ const SECTIONS: LegalSection[] = [
     icon: Clock,
     body: (
       <P>
-        We keep your information only as long as needed for the purposes above, or as the law requires. Enquiries that do not lead to a project are deleted after a reasonable period. Project files are kept while we work together and for support after launch, then removed or returned on request.
+        We retain personal information only for as long as necessary to respond to enquiries, manage projects, provide agreed services and meet applicable legal obligations. When information is no longer needed, we take reasonable steps to delete or securely dispose of it.
       </P>
     ),
   },
@@ -101,7 +102,7 @@ const SECTIONS: LegalSection[] = [
           <li>Delete your data, or stop us from using it for marketing.</li>
         </UL>
         <P>
-          Email <strong className="text-white">privacy@auroxify.com</strong> and we will respond as soon as we can.
+          Email <strong className="text-white">infoauroxify.com</strong> and we will respond as soon as we can.
         </P>
       </>
     ),
