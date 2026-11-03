@@ -85,9 +85,11 @@ const WHY = [
   { i: MessageCircle, t: "Clear Communication", d: "We keep you informed throughout the project with straightforward communication." },
 ];
 const PROJECTS = [
-  ["Fashion Store", "Online shop", "#2B6DAE", "#06b6d4"], ["Fitness App", "Custom website", "#7c3aed", "#a855f7"],
-  ["Real Estate", "Website + SEO", "#d97706", "#ef4444"], ["Restaurant", "Website", "#0ea5e9", "#478ECE"],
-  ["Education Portal", "Website + AI", "#06b6d4", "#7c3aed"],
+  ["Wrangler Homes", "Real estate website", "#d97706", "#ef4444", "https://wranglerhomes.com/", "https://plus.unsplash.com/premium_photo-1661902934269-17eaf4b04f9f?q=80&w=996&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"],
+  ["Run It Remote", "Lead generation website", "#7c3aed", "#a855f7", "https://ericcline.runitremote.com/", "https://images.unsplash.com/photo-1758691736548-073bc97cdff4?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"],
+  ["Ember Realtors", "Luxury real estate", "#2B6DAE", "#06b6d4", "https://emberrealtors.com/", "https://plus.unsplash.com/premium_photo-1661872962374-ada0cdf0bd88?q=80&w=919&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"],
+  ["The Flooring Bull", "Website + SEO", "#0ea5e9", "#478ECE", "https://theflooringbull.com/", "https://plus.unsplash.com/premium_photo-1661962688308-2b00b88b9765?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"],
+  ["Ember Capital Group", "Real Estate Website", "#06b6d4", "#7c3aed", "https://www.embercapitalgroup.com", "https://images.unsplash.com/photo-1748063578185-3d68121b11ff?q=80&w=1046&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"],
 ];
 const FAQ = [
   ["How long does a website take?", "Project timelines depend on the website's size, features and complexity. We'll discuss the estimated timeline with you before development begins."],
@@ -654,21 +656,39 @@ function Portfolio() {
           </div>
         </div>
         <div ref={rail} className="no-scrollbar -mx-5 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-6 md:mx-0 md:px-0">
-          {PROJECTS.map(([name, cat, a, b], i) => (
-            <motion.article key={name} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.8, ease, delay: i * 0.08 }}
-              whileHover={{ y: -12 }} className="w-[80%] shrink-0 snap-center sm:w-[46%] lg:w-[31%]">
+        {PROJECTS.map(([name, cat, a, b, url, img], i) => (
+          <motion.a
+            key={name}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${name} in a new tab`}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease, delay: i * 0.08 }}
+            whileHover={{ y: -12 }}
+            className="group block w-[80%] shrink-0 snap-center sm:w-[46%] lg:w-[31%]"
+          >
               <div className="glass overflow-hidden p-3">
-                <div className="relative aspect-[16/11] overflow-hidden rounded-2xl p-4" style={{ background: `linear-gradient(135deg,${a},${b})` }}>
-                  <div className="h-3 w-1/3 rounded-full bg-white/50" />
-                  <div className="mt-4 h-16 w-3/5 rounded-xl bg-white/20" />
-                  <div className="absolute inset-x-4 bottom-4 grid grid-cols-3 gap-2">{[0, 1, 2].map((k) => <div key={k} className="h-12 rounded-lg bg-black/25" />)}</div>
+                <div
+                  className="relative aspect-[16/11] overflow-hidden rounded-2xl"
+                  style={{ background: `linear-gradient(135deg,${a},${b})` }}
+                >
+                  <img
+                    src={img}
+                    alt={name}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-base/50 via-transparent to-transparent" />
                 </div>
                 <div className="flex items-center justify-between px-2 pb-1 pt-4">
                   <div><h3 className="font-heading text-xl font-semibold">{name}</h3><p className="font-mono text-xs text-eyebrow">{cat}</p></div>
                   <span className="grid h-10 w-10 place-items-center rounded-full border border-line-hover text-[var(--text-mid)]"><ArrowUpRight size={16} /></span>
                 </div>
               </div>
-            </motion.article>
+            </motion.a>
           ))}
         </div>
         <div className="mt-6 flex justify-center"><Link href="/portfolio" className="btn btn-primary w-full sm:w-auto">View All Projects <ArrowUpRight size={16} /></Link></div>

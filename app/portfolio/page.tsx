@@ -16,92 +16,100 @@ type Filter = (typeof FILTERS)[number];
 
 const PROJECTS = [
   {
-    title: "Fashion Store",
-    category: "E-Commerce",
-    tag: "E-Commerce",
-    desc: "A modern Shopify store with seamless checkout and high-converting product pages.",
-    img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop",
-    color: "from-pink-500/25 to-rose-500/5",
+    title: "Wrangler Homes",
+    category: "Real Estate + Lead Gen",
+    tag: "SEO",
+    desc: "Cash home-buyer website with a multi-step offer form, interactive US coverage map and fully SEO-optimized pages.",
+    url: "https://wranglerhomes.com/",
+    img: "https://plus.unsplash.com/premium_photo-1661902934269-17eaf4b04f9f?q=80&w=996&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    color: "from-amber-500/25 to-orange-500/5",
     size: "sm:col-span-2 lg:col-span-2 lg:row-span-2",
-    icon: ShoppingCart,
+    icon: Search,
   },
   {
-    title: "TechFlow SaaS",
-    category: "Custom Development",
+    title: "Funnel Plane",
+    category: "Agency Website",
     tag: "Web Apps",
-    desc: "Next.js dashboard for a SaaS startup with real-time analytics.",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+    desc: "A bold, high-converting site for a digital growth agency, with 10+ service pages for ads, SEO and AI automation.",
+    url: "https://funnelplane.com/",
+    img: "https://media.istockphoto.com/id/1269263971/photo/close-up-on-the-hands-of-the-male-specialist-works-on-a-laptop-computer-screen-shows-various.webp?a=1&b=1&s=612x612&w=0&k=20&c=dxP0azI9RH5JSf9m1Cs3NNiYg5kEZ49v8wQEij0bEu8=",
     color: "from-blue-500/25 to-cyan-500/5",
     size: "",
     icon: Code2,
   },
   {
-    title: "Luxe Real Estate",
-    category: "Website + SEO",
+    title: "The Flooring Bull",
+    category: "Local Business + SEO",
     tag: "SEO",
-    desc: "A high-end property listing website that ranks #1 for local searches.",
-    img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop",
-    color: "from-amber-500/25 to-orange-500/5",
-    size: "",
-    icon: Search,
-  },
-  {
-    title: "HealthPulse App",
-    category: "AI Integration",
-    tag: "AI",
-    desc: "Mobile-first wellness app with an AI chatbot for daily health tips.",
-    img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop",
-    color: "from-emerald-500/25 to-green-500/5",
-    size: "",
-    icon: Smartphone,
-  },
-  {
-    title: "EduSphere Portal",
-    category: "Custom Dev + SEO",
-    tag: "Web Apps",
-    desc: "Learning management system with built-in performance tracking.",
-    img: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=800&auto=format&fit=crop",
-    color: "from-violet-500/25 to-purple-500/5",
+    desc: "Flooring installation site with a step-by-step estimate funnel, before/after slider and local Georgia SEO.",
+    url: "https://theflooringbull.com/",
+    img: "https://plus.unsplash.com/premium_photo-1661962688308-2b00b88b9765?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    color: "from-orange-500/25 to-amber-500/5",
     size: "",
     icon: LayoutTemplate,
   },
   {
-    title: "Urban Coffee",
-    category: "E-Commerce",
-    tag: "E-Commerce",
-    desc: "WooCommerce store with subscription models and local delivery logic.",
-    img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop",
-    color: "from-orange-500/25 to-amber-500/5",
-    size: "sm:col-span-2",
-    icon: ShoppingCart,
+    title: "Ember Realtors",
+    category: "Luxury Real Estate",
+    tag: "Web Apps",
+    desc: "Premium luxury property platform with property search, signature listings and agent profiles.",
+    url: "https://emberrealtors.com/",
+    img: "https://plus.unsplash.com/premium_photo-1661872962374-ada0cdf0bd88?q=80&w=919&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    color: "from-rose-500/25 to-red-500/5",
+    size: "",
+    icon: Globe,
   },
   {
-    title: "FitLife Gym",
-    category: "Website",
+    title: "Run It Remote",
+    category: "Lead Gen Agency",
     tag: "Web Apps",
-    desc: "A bold, high-energy website for a fitness brand with class booking.",
-    img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop",
-    color: "from-red-500/25 to-rose-500/5",
+    desc: "Multi-page cold-calling and lead generation site with industry pages, live stats and a strategy-call form.",
+    url: "https://ericcline.runitremote.com/",
+    img: "https://images.unsplash.com/photo-1758691736548-073bc97cdff4?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    color: "from-emerald-500/25 to-green-500/5",
     size: "",
     icon: Zap,
   },
   {
-    title: "Global Logistics",
-    category: "Web App",
+    title: "Modern Furniture Store",
+    category: "E-Commerce",
+    tag: "E-Commerce",
+    desc: "A complete 12+ page sofa and furniture store with product listings, cart and checkout, built in 24 hours for a hackathon.",
+    url: "https://ui-ux-hackathon--zeta.vercel.app/",
+    img: "https://plus.unsplash.com/premium_photo-1733864827286-d43afe9a1ae7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    color: "from-pink-500/25 to-rose-500/5",
+    size: "sm:col-span-2",
+    icon: ShoppingCart,
+  },
+  {
+    title: "Image to Prompt",
+    category: "AI Tool",
+    tag: "AI",
+    desc: "An AI-powered tool that turns any image into a detailed, ready-to-use prompt.",
+    url: "https://img-to-prompt.netlify.app/",
+    img: "https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    color: "from-violet-500/25 to-purple-500/5",
+    size: "",
+    icon: Smartphone,
+  },
+  {
+    title: "Whitman Book",   // <-- iska asli naam bata do
+    category: "Custom Website",
     tag: "Web Apps",
-    desc: "Tracking dashboard for a freight company handling 10k+ shipments daily.",
-    img: "https://images.unsplash.com/photo-1586528116311-ad8ed7c508b0?q=80&w=800&auto=format&fit=crop",
+    desc: "A complete website built from scratch as a software house interview task, fully custom-coded.",
+    url: "https://stately-monstera-50259a.netlify.app/",
+    img: "https://images.unsplash.com/photo-1622704015099-3ace02eab2c2?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
     color: "from-slate-500/25 to-gray-500/5",
     size: "",
-    icon: Globe,
+    icon: Code2,
   },
 ];
 
 const STATS = [
-  { v: "120+", l: "Projects delivered" },
-  { v: "98%", l: "Client satisfaction" },
-  { v: "12+", l: "Countries served" },
-  { v: "6+", l: "Years in business" },
+  { v: "10+", l: "Projects delivered" },
+  { v: "1+", l: "Year of experience" },
+  { v: "5+", l: "Industries served" },
+  { v: "24h", l: "Hackathon build time" },
 ];
 
 /* ═══════ LAPTOP MOCKUP ═══════ */
@@ -139,7 +147,7 @@ function LaptopMockup() {
               <span className="h-2 w-2 rounded-full bg-yellow-500/80" />
               <span className="h-2 w-2 rounded-full bg-green-500/80" />
               <div className="ml-2 min-w-0 flex-1 truncate rounded-md bg-white/5 px-3 py-1 font-mono text-[10px] text-[var(--text-dim)]">
-                auroxify.com/work/{current.title.toLowerCase().replace(/\s+/g, "-")}
+                {current.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}
               </div>
             </div>
 
@@ -323,15 +331,19 @@ export default function PortfolioPage() {
           >
             <AnimatePresence mode="popLayout">
               {visible.map((proj) => (
-                <motion.article
-                  layout
-                  key={proj.title}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.5, ease }}
-                  className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-card ${filter === "All" ? proj.size : ""}`}
-                >
+            <motion.a
+              layout
+              key={proj.title}
+              href={proj.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${proj.title} in a new tab`}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.5, ease }}
+              className={`group relative block overflow-hidden rounded-3xl border border-white/10 bg-card ${filter === "All" ? proj.size : ""}`}
+            >
                   <img
                     src={proj.img}
                     alt={proj.title}
@@ -347,9 +359,9 @@ export default function PortfolioPage() {
                         <span className="rounded-lg border border-white/10 bg-white/10 p-2 text-white backdrop-blur-md">
                           <proj.icon size={16} />
                         </span>
-                        <span className="rounded-md bg-primary/10 px-2 py-1 font-mono text-[11px] uppercase tracking-widest text-primary">
-                          {proj.category}
-                        </span>
+                  <span className="rounded-md border border-white/20 bg-black/60 px-2.5 py-1 font-mono text-[11px] font-semibold uppercase tracking-widest text-white backdrop-blur-md">
+                    {proj.category}
+                  </span>
                       </div>
                       <h3 className="font-heading text-2xl font-bold text-white md:text-3xl">{proj.title}</h3>
                       <p className="mt-2 line-clamp-2 max-w-md text-sm text-[var(--text-mid)] transition-opacity duration-500 md:opacity-0 md:delay-100 md:group-hover:opacity-100">
@@ -361,7 +373,7 @@ export default function PortfolioPage() {
                       <ArrowUpRight size={20} className="text-white" />
                     </div>
                   </div>
-                </motion.article>
+                </motion.a>
               ))}
             </AnimatePresence>
           </motion.div>

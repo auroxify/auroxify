@@ -21,14 +21,14 @@ const FOUNDERS = [
     role: "Co-Founder & CEO",
     desc: "Focuses on business direction, client relationships and shaping digital solutions around real business needs.",
     img: "/founder2.png",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/muhammad-qasim-44a9132b4/",
   },
   {
     name: "Hafiz Hamza",
     role: "Co-Founder & CTO",
     desc: "Focuses on technology and development, turning ideas into functional, responsive and user-friendly digital experiences.",
     img: "/founder1.jpeg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/hafiz-hamza-009642289/",
   },
 ];
 
