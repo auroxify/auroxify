@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 /* ── EDIT THESE ── */
-const PHONE = "920000000000"; // country code + number, no + or spaces (Pakistan: 92...)
+const PHONE = "923193936892"; 
 const MESSAGE = "Hello! I would like to know more about your services.";
 
 export default function WhatsAppButton() {

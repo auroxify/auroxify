@@ -250,7 +250,7 @@ export default function PortfolioPage() {
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.1 }}
               className="h-xl mt-6"
             >
-              Real projects. <br className="hidden sm:block" /> <span className="grad-text">Real results.</span>
+              Real projects <br className="hidden sm:block" /> <span className="grad-text">Real results</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.2 }}

@@ -147,7 +147,7 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.1 }}
             className="h-xl mt-6"
           >
-            We turn ideas into <br className="hidden sm:block" /> <span className="grad-text">digital reality.</span>
+            We turn ideas into <br className="hidden sm:block" /> <span className="grad-text">digital reality</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.2 }}
@@ -334,7 +334,7 @@ export default function About() {
           <Reveal>
             <div className="relative aspect-square overflow-hidden rounded-3xl border border-line">
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1779444480590-9bf6f021d5d4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
                 alt="Our team"
                 loading="lazy"
                 className="h-full w-full object-cover transition-all duration-700 md:grayscale md:hover:grayscale-0"

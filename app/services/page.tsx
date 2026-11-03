@@ -200,7 +200,7 @@ export default function Services() {
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.1 }}
             className="h-xl mt-6"
           >
-            Everything you need <br className="hidden sm:block" /> to <span className="grad-text">grow online.</span>
+            Everything you need <br className="hidden sm:block" /> to <span className="grad-text">grow online</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.2 }}

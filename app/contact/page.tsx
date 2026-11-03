@@ -12,16 +12,18 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 /* ── EDIT YOUR REAL DETAILS HERE ── */
 const EMAIL = "info@auroxify.com";
-const PHONE_DISPLAY = "+92 300 1234567";
-const PHONE_TEL = "+923001234567";
-const WHATSAPP = "920000000000"; // country code + number, no + or spaces
+const PHONE_DISPLAY = "+92 319 3936892";
+const PHONE_TEL = "+923193936892";
+const WHATSAPP = "923193936892"; // country code + number, no + or spaces
 const WHATSAPP_MESSAGE = "Hello! I would like to know more about your services.";
-const OFFICE_NAME = "Auroxify HQ";
-const OFFICE_ADDRESS = "Gulberg III, Lahore, Pakistan";
-const MAP_QUERY = "Gulberg III, Lahore, Pakistan";
+const OFFICE_NAME = "Auroxify Software Company";
+const OFFICE_ADDRESS = "DHA, Karachi, Pakistan";
+const MAP_QUERY = "DHA, Karachi, Pakistan";
 const HOURS = "Mon-Sat, 9am to 6pm (PKT)";
+const WEB3FORMS_KEY = "41c59aaa-b941-45b9-9b67-f642c33cd05c";
 
 const WA_LINK = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+const GMAIL_LINK = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=${encodeURIComponent("Inquiry from Auroxify website")}`;
 
 const SERVICES = [
   { id: "web", label: "Web Development" },
@@ -58,6 +60,7 @@ function ContactForm() {
   const [budget, setBudget] = useState<string>("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [error, setError] = useState("");
+  const [submitError, setSubmitError] = useState("");
 
   // pre-select the service when coming from /services (?service=ai)
   useEffect(() => {
@@ -65,21 +68,42 @@ function ContactForm() {
     if (s && SERVICES.some((x) => x.id === s)) setService(s);
   }, [params]);
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!service) {
-      setError("Please choose the service you need.");
-      return;
+ const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  if (!service) {
+    setError("Please choose the service you need.");
+    return;
+  }
+  setError("");
+  setSubmitError("");
+  setStatus("sending");
+
+  const fd = new FormData(e.currentTarget);
+  const serviceLabel = SERVICES.find((s) => s.id === service)?.label ?? service;
+
+  fd.append("access_key", WEB3FORMS_KEY);
+  fd.append("subject", `New inquiry: ${serviceLabel} - ${fd.get("name")}`);
+  fd.append("from_name", "Auroxify Website");
+  fd.append("service", serviceLabel);
+  fd.append("budget", budget || "Not specified");
+
+  try {
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: fd,
+    });
+    const data = await res.json();
+    if (data.success) {
+      setStatus("sent");
+    } else {
+      setStatus("idle");
+      setSubmitError("Something went wrong. Please try again or message us on WhatsApp.");
     }
-    setError("");
-    setStatus("sending");
-
-    // TODO: connect this to your real backend, e.g.
-    // await fetch("/api/contact", { method: "POST", body: JSON.stringify({ ...fields, service, budget }) });
-    await new Promise((r) => setTimeout(r, 1400));
-
-    setStatus("sent");
-  };
+  } catch {
+    setStatus("idle");
+    setSubmitError("Network error. Please check your connection and try again.");
+  }
+};
 
   const reset = () => {
     setStatus("idle");
@@ -204,6 +228,13 @@ function ContactForm() {
               />
             </label>
 
+            <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
+            {submitError && (
+              <p role="alert" className="text-center text-sm text-red-400">
+                {submitError}
+              </p>
+            )}
+
             <button type="submit" disabled={status === "sending"} className="btn btn-primary group w-full disabled:opacity-70">
               {status === "sending" ? (
                 <span className="flex items-center gap-2">
@@ -280,7 +311,7 @@ export default function ContactPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const CARDS = [
-    { icon: Mail, title: "Email us", val: EMAIL, href: `mailto:${EMAIL}` },
+    { icon: Mail, title: "Email us", val: EMAIL, href: GMAIL_LINK },
     { icon: Phone, title: "Call us", val: PHONE_DISPLAY, href: `tel:${PHONE_TEL}` },
     { icon: MessageCircle, title: "WhatsApp", val: "Message us anytime", href: WA_LINK },
     { icon: MapPin, title: "Visit us", val: OFFICE_ADDRESS, href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}` },
@@ -307,7 +338,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.1 }}
               className="h-xl mt-6"
             >
-              Let's build <br className="hidden sm:block" /> <span className="grad-text">something great.</span>
+              Let's build <br className="hidden sm:block" /> <span className="grad-text">something great</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.2 }}

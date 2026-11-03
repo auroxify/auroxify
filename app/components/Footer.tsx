@@ -5,6 +5,7 @@ import { ArrowUp, ArrowUpRight, Mail, MapPin } from "lucide-react";
 import { SOCIALS } from "./Socials";
 
 const EMAIL = "info@auroxify.com";
+const GMAIL_LINK = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=${encodeURIComponent("Inquiry from Auroxify website")}`;
 const LOCATION = "Karachi, Pakistan";
 
 const COLS = [
@@ -60,7 +61,12 @@ export default function Footer() {
             </p>
 
             <div className="mt-6 space-y-3 text-sm text-[var(--text-mid)]">
-              <a href={`mailto:${EMAIL}`} className="flex items-center gap-2 hover:text-bright">
+              <a
+                href={GMAIL_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-bright"
+              >
                 <Mail size={15} className="shrink-0" />
                 <span className="min-w-0 break-all">{EMAIL}</span>
               </a>

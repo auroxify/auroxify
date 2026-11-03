@@ -15,7 +15,8 @@ const LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
-const EMAIL = "hello@auroxify.com";
+const EMAIL = "info@auroxify.com";
+const GMAIL_LINK = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=${encodeURIComponent("Inquiry from Auroxify website")}`;
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -190,7 +191,12 @@ export default function Navbar() {
                 Get a Free Quote <ArrowUpRight size={16} />
               </Link>
 
-              <a href={`mailto:${EMAIL}`} className="flex items-center gap-2 text-sm text-[var(--text-mid)] hover:text-white">
+              <a
+                href={GMAIL_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-[var(--text-mid)] hover:text-white"
+              >
                 <Mail size={16} className="shrink-0" />
                 <span className="min-w-0 break-all">{EMAIL}</span>
               </a>
