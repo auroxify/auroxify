@@ -3,6 +3,9 @@ import { ArrowUpRight, ListTree } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
+const EMAIL = "info@auroxify.com";
+const GMAIL_LINK = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=${encodeURIComponent("Inquiry from Auroxify website")}`;
+
 export type LegalSection = {
   id: string;
   title: string;
@@ -37,7 +40,6 @@ const ACCENTS = {
   },
 };
 
-/* small helpers so both pages style lists the same way */
 export function UL({ children }: { children: ReactNode }) {
   return <ul className="mt-4 list-disc space-y-2.5 pl-5 marker:text-[var(--text-faint)]">{children}</ul>;
 }
@@ -140,9 +142,14 @@ export default function LegalLayout({
               <h2 className="font-heading text-xl font-semibold text-white">Questions about this page?</h2>
               <p className="mt-2 text-sm">
                 Write to us and a real person will reply. For anything about your data or your project terms, email{" "}
-                <a href="mailto:info@auroxify.com" className={`font-semibold ${a.link} hover:underline`}>
-                  info@auroxify.com
-                </a>
+              <a
+                href={GMAIL_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`font-semibold ${a.link} hover:underline`}
+              >
+                {EMAIL}
+              </a>
                 .
               </p>
               <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm">

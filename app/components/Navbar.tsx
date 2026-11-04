@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
@@ -73,16 +74,22 @@ export default function Navbar() {
         } ${scrolled || open ? "border-b border-line bg-base/80 backdrop-blur-xl" : "border-b border-transparent"}`}
         style={{ paddingTop: "env(safe-area-inset-top)" }}
       >
-        <nav className="mx-auto flex h-[68px] w-full max-w-[1400px] items-center justify-between px-5 md:px-10" aria-label="Main">
-          <Link href="/" className="flex items-center gap-3 font-heading text-lg font-bold tracking-tight" aria-label="Auroxify home">
-            <span
-              className="grid h-9 w-9 place-items-center rounded-xl text-sm font-bold text-white shadow-[var(--glow-brand)]"
-              style={{ background: "var(--grad-brand)" }}
-            >
-              A
-            </span>
-            Auroxify
-          </Link>
+      <nav className="mx-auto flex h-[68px] lg:h-[76px] w-full max-w-[1400px] items-center justify-between px-5 md:px-10" aria-label="Main">
+      <Link
+        href="/"
+        className="flex items-center gap-0.5 font-heading text-lg font-bold tracking-tight sm:gap-1 sm:text-xl lg:gap-0 lg:text-2xl"
+        aria-label="Auroxify home"
+      >
+        <Image
+          src="/logo.png"
+          alt=""
+          width={358}
+          height={385}
+          priority
+          className="-mr-2 h-12 w-auto sm:-mr-2 sm:h-14 lg:-mr-4 lg:h-[68px]"
+        />
+        <span>Auroxify</span>
+      </Link>
 
           {/* desktop links */}
           <ul className="hidden items-center gap-1 lg:flex">

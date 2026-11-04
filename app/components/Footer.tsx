@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUp, ArrowUpRight, Mail, MapPin } from "lucide-react";
 import { SOCIALS } from "./Socials";
 
@@ -14,6 +15,7 @@ const COLS = [
     links: [
       ["About", "/about"],
       ["Portfolio", "/portfolio"],
+      ["Services", "/services"],
       ["Contact", "/contact"],
     ],
   },
@@ -47,15 +49,21 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-x-6 gap-y-12 pb-14 pt-16 md:pt-20 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
           {/* brand */}
           <div className="col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-3 font-heading text-xl font-bold" aria-label="Auroxify home">
-              <span
-                className="grid h-9 w-9 place-items-center rounded-xl text-sm text-white"
-                style={{ background: "var(--grad-brand)" }}
-              >
-                A
-              </span>
-              Auroxify
-            </Link>
+      <Link
+        href="/"
+        className="flex items-center gap-0 font-heading text-lg font-bold tracking-tight sm:gap-1 sm:text-xl lg:gap-0 lg:text-2xl"
+        aria-label="Auroxify home"
+      >
+        <Image
+          src="/logo.png"
+          alt=""
+          width={358}
+          height={385}
+          priority
+          className="-mr-3 h-12 w-auto sm:-mr-2 sm:h-14 lg:-mr-4 lg:h-[68px]"
+        />
+        <span>Auroxify</span>
+      </Link>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-[var(--text-dim)]">
               We build websites, online shops and AI tools, and help people find you on Google.
             </p>
@@ -118,7 +126,7 @@ export default function Footer() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-60" />
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-400" />
             </span>
-            Taking on new projects this month.
+            Open for new projects. Let's build yours.
           </p>
           <Link href="/contact" className="inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:text-bright">
             Get a Free Quote <ArrowUpRight size={16} />

@@ -14,7 +14,7 @@ import {
 
 /* ═══════════════ EDIT YOUR CONTENT HERE ═══════════════ */
 const COMPANY = "Auroxify";
-const WHATSAPP = "https://wa.me/920000000000";
+const WHATSAPP = "https://wa.me/923193936892";
 const HERO_STATS = [
   ["2026", "Founded"],
   ["5+", "Digital services"],

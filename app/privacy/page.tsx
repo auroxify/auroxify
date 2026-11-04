@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 
 // Update this date by hand whenever you change the policy.
 const UPDATED = "November 2, 2026";
+const EMAIL = "info@auroxify.com";
+const GMAIL_LINK = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=${encodeURIComponent("Privacy enquiry")}`;
 
 const SECTIONS: LegalSection[] = [
   {
@@ -74,9 +76,17 @@ const SECTIONS: LegalSection[] = [
     title: "Cookies and tracking",
     icon: Cookie,
     body: (
-      <P>
-        Our website may use essential cookies or similar technologies to support basic functionality and improve your browsing experience. If we introduce analytics or other tracking tools, this policy will be updated to explain how they are used. You can manage cookies through your browser settings.
-      </P>
+      <>
+        <P>
+          We use Vercel Web Analytics to understand how visitors use our website, such as which pages are viewed and the general region visitors come from. We also use Vercel Speed Insights to measure how fast our pages load for real visitors. Both are designed to be privacy-friendly and do not use cookies to track you across websites.
+        </P>
+        <P>
+          Our contact page includes an embedded Google Map. When you load that page, Google may set cookies or collect technical information according to its own privacy policy. Other than this, we do not use advertising or marketing cookies.
+        </P>
+        <P>
+          You can manage or block cookies at any time through your browser settings. If we add new tracking tools in the future, we will update this policy.
+        </P>
+      </>
     ),
   },
   {
@@ -102,7 +112,16 @@ const SECTIONS: LegalSection[] = [
           <li>Delete your data, or stop us from using it for marketing.</li>
         </UL>
         <P>
-          Email <strong className="text-white">infoauroxify.com</strong> and we will respond as soon as we can.
+          Email{" "}
+          <a
+            href={GMAIL_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-white underline decoration-white/30 underline-offset-4 transition hover:text-bright"
+          >
+            {EMAIL}
+          </a>{" "}
+          and we will respond as soon as we can.
         </P>
       </>
     ),
