@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/app/lib/site";
 import { Scale, FileCheck, Briefcase, Banknote, Users, LifeBuoy, Copyright, EyeOff, AlertTriangle, DoorOpen, Gavel, RefreshCw } from "lucide-react";
 import LegalLayout, { P, UL, type LegalSection } from "@/app/components/LegalLayout";
 
-export const metadata: Metadata = {
-  title: "Terms of Service | Auroxify",
-  description: "Review the terms, responsibilities and conditions that apply when using Auroxify's website and digital services.",
-};
+export const metadata = pageMeta({
+  title: "Terms of Service",
+  description: "The terms, payment conditions and responsibilities that apply when you work with Auroxify or use our website.",
+  path: "/terms",
+});
 
 // Update this date by hand whenever you change the terms.
 const UPDATED = "November 2, 2026";
@@ -124,7 +125,7 @@ const SECTIONS: LegalSection[] = [
     icon: Gavel,
     body: (
       <P>
-        These Terms are governed by the laws of Pakistan, without regard to conflict-of-law rules. Any dispute will be handled by the courts of Lahore, Pakistan.
+        These Terms are governed by the laws of Pakistan, without regard to conflict-of-law rules. Any dispute will be handled by the courts of Karachi, Pakistan.
       </P>
     ),
   },

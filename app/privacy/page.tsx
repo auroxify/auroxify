@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/app/lib/site";
 import { ShieldCheck, FileText, Eye, Lock, Cookie, Share2, Clock, UserCheck, Baby, RefreshCw } from "lucide-react";
 import LegalLayout, { P, UL, type LegalSection } from "@/app/components/LegalLayout";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | Auroxify",
-  description: "Learn how Auroxify collects, uses, and protects the personal information you share with us.",
-};
+export const metadata = pageMeta({
+  title: "Privacy Policy",
+  description: "How Auroxify collects, uses and protects the personal information you share through our website and contact form.",
+  path: "/privacy",
+});
 
 // Update this date by hand whenever you change the policy.
 const UPDATED = "November 2, 2026";
