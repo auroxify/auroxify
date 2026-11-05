@@ -16,9 +16,9 @@ const PHONE_DISPLAY = "+92 319 3936892";
 const PHONE_TEL = "+923193936892";
 const WHATSAPP = "923193936892"; // country code + number, no + or spaces
 const WHATSAPP_MESSAGE = "Hello! I would like to know more about your services.";
-const OFFICE_NAME = "Auroxify Software Company";
-const OFFICE_ADDRESS = "DHA, Karachi, Pakistan";
-const MAP_QUERY = "DHA, Karachi, Pakistan";
+const OFFICE_NAME = "Auroxify";
+const OFFICE_ADDRESS = "Karachi, Pakistan";
+const MAP_QUERY = "Karachi, Pakistan";
 const HOURS = "Mon-Sat, 9am to 6pm (PKT)";
 const WEB3FORMS_KEY = "41c59aaa-b941-45b9-9b67-f642c33cd05c";
 

@@ -2,7 +2,7 @@ import JsonLd from "@/app/components/JsonLd";
 import { pageMeta, breadcrumb, abs, SITE } from "@/app/lib/site";
 
 const TITLE = "Contact Us – Software House in Karachi";
-const DESC = "Get a free quote from Auroxify, a software house in DHA, Karachi. Call, WhatsApp or send your project details and we will reply within a day.";
+const DESC = "Get a free quote from Auroxify, a software house in  Karachi. Call, WhatsApp or send your project details and we will reply within a day.";
 
 export const metadata = pageMeta({
   title: TITLE,

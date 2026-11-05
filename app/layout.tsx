@@ -100,7 +100,7 @@ const schema = {
       email: SITE.email,
       telephone: SITE.phone,
       foundingDate: "2026",
-      address: { "@type": "PostalAddress", ...SITE.address },
+      address: { "@type": "PostalAddress", addressLocality: "Karachi", addressRegion: "Sindh", addressCountry: "PK" },
       areaServed: [
         { "@type": "City", name: "Karachi" },
         { "@type": "Country", name: "Pakistan" },

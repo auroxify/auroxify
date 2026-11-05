@@ -16,7 +16,7 @@ export const SITE = {
   // Sirf wo links rakhein jo asli bane hon, baaqi hata dein
   sameAs: [
     "https://facebook.com/auroxify",
-    "https://instagram.com/auroxify",
+    "https://www.instagram.com/auroxify.agency/",
     "https://linkedin.com/company/auroxify",
   ],
 };
