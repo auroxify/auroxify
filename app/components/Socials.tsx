@@ -1,7 +1,7 @@
 import type { SVGProps } from "react";
 
 /* ── EDIT YOUR REAL PROFILE LINKS HERE ── */
-const FACEBOOK_URL = "https://facebook.com/auroxify";
+const FACEBOOK_URL = "https://www.facebook.com/share/14zcCCfAt2Y/";
 const INSTAGRAM_URL = "https://www.instagram.com/auroxify.agency/";
 const LINKEDIN_URL = "https://linkedin.com/company/auroxify";
 
