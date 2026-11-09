@@ -336,7 +336,7 @@ function Hero() {
             <span className="dot-pulse" /> Websites · AI · SEO
           </motion.div>
           <motion.h1 id="hero-h" className="h-xl" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease, delay: 0.1 }}>
-            We build websites that bring you <span className="grad-text">customers</span>
+            We build websites that turn visitors into <span className="grad-text">customers</span>
           </motion.h1>
           <motion.p className="lead" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease, delay: 0.25 }}>
             From online shops to smart AI tools, we help your business grow online. Simple, fast, and built to last.

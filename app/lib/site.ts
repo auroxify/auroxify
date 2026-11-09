@@ -15,9 +15,9 @@ export const SITE = {
   },
   // Sirf wo links rakhein jo asli bane hon, baaqi hata dein
   sameAs: [
-    "https://www.facebook.com/share/14zcCCfAt2Y/",
+    "https://www.facebook.com/profile.php?id=61596422097419",
     "https://www.instagram.com/auroxify.agency/",
-    "https://linkedin.com/company/auroxify",
+    "https://linkedin.com/company/auroxifyhq",
   ],
 };
 

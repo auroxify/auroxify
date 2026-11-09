@@ -1,9 +1,9 @@
 import type { SVGProps } from "react";
 
 /* ── EDIT YOUR REAL PROFILE LINKS HERE ── */
-const FACEBOOK_URL = "https://www.facebook.com/share/14zcCCfAt2Y/";
+const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61596422097419";
 const INSTAGRAM_URL = "https://www.instagram.com/auroxify.agency/";
-const LINKEDIN_URL = "https://linkedin.com/company/auroxify";
+const LINKEDIN_URL = "https://linkedin.com/company/auroxifyhq";
 
 type IconProps = SVGProps<SVGSVGElement> & { size?: number };
 
