@@ -27,7 +27,7 @@ const FOUNDERS = [
     name: "Hafiz Hamza",
     role: "Co-Founder & CTO",
     desc: "Focuses on technology and development, turning ideas into functional, responsive and user-friendly digital experiences.",
-    img: "/founder1.jpeg",
+    img: "/founder1.jpg",
     linkedin: "https://www.linkedin.com/in/hafiz-hamza-009642289/",
   },
 ];
